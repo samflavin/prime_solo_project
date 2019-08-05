@@ -3,7 +3,7 @@
     font-weight: 700;
     display: inline-block;
     color: #f2f2f2;
-    padding-left: 10px;
+    text-align: center;
 }
 
 .nav {
@@ -19,6 +19,8 @@
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
+  padding-left: 175px;
+
 
   /* these last two make the logout button in
   the nav bar look like another link */

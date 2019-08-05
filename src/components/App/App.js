@@ -16,6 +16,12 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+//add routes for create event steps
+import Description from '../CreateEvent/Description';
+import Poll from '../CreateEvent/Poll';
+import AddGuests from '../CreateEvent/AddGuests';
+import Submit from '../CreateEvent/Submit';
+
 
 import './App.css';
 
@@ -56,6 +62,14 @@ class App extends Component {
               component={InfoPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
+            {/*adding routes fore create event stepbystep*/}
+            <Route Description path="/description" component={Description} />
+            <Route Poll path="/poll" component={Poll} />
+            <Route AddGuests path="/addGuest" component={AddGuests} />
+            <Route Submit path="/submit" component={Submit} />
+
+
+          
             <Route render={() => <h1>404</h1>} />
           </Switch>
           <Footer />
