@@ -63,8 +63,9 @@ class Poll extends Component {
         });
         console.log(this.state)
 
-
     }
+
+    
 
     render() {
         console.log(this.state)
@@ -104,6 +105,10 @@ class Poll extends Component {
                         </>
                     )}
                         </section>
+                <br />
+                <button onClick={this.handleBack}>Back</button>
+                &nbsp;
+            <button onClick={this.handleClick}>Next</button>
 
                         
                 

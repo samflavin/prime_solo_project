@@ -3,16 +3,18 @@ import React, { Component } from 'react';
 
 class AddGuests extends Component {
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_GUESTS' })
+    }
+
     handleClick = () => {
         // Then programmatically  nav back to home
         this.props.history.push('/submit');
     }
 
     handleBack = () => {
-        // Do javascript fun stuff?
-        alert('Going back');
-
-        // Then programmatically  nav back to home
+    
+        // Then programmatically  nav back to poll
         this.props.history.push('/poll');
     }
 

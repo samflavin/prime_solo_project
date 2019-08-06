@@ -30,8 +30,6 @@ class Description extends Component {
     }
 
     handleBack = () => {
-        // Do javascript fun stuff?
-        alert('Going back');
 
         // Then programmatically  nav back to home
         this.props.history.push('/home');
