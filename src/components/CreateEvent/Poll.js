@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PollItem from './pollItem/PollItem';
 
 
 
@@ -67,7 +68,7 @@ class Poll extends Component {
 
     render() {
         console.log(this.state)
-
+        console.log(this.props.reduxStore.poll)
         return (
 
             <>
@@ -96,7 +97,14 @@ class Poll extends Component {
                         <br />
                         {JSON.stringify(this.props.reduxStore.poll)}
                         <section>
-
+                    <p>{this.props.reduxStore.poll.question} {this.props.reduxStore.poll.options}</p>
+                    
+                    {this.props.reduxStore.poll.map((item, i) =>
+                    <>
+                        <p key={i}>{item.question}</p>
+                        <PollItem options={item.options} key={i} />
+                        </>
+                    )}
                         </section>
 
                         
