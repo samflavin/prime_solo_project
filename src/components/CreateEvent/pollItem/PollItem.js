@@ -19,7 +19,7 @@ class PollItem extends Component {
         return (
             <div>
                {this.props.options.map((item, i) => 
-                <p>{i+1}:{item}</p>
+                <p>Option {i+1}: {item}</p>
                 )}
                 {/* {JSON.stringify(this.props.options)} */}
             </div>

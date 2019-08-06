@@ -97,11 +97,9 @@ class Poll extends Component {
                         <br />
                         {/* {JSON.stringify(this.props.reduxStore.poll)} */}
                         <section>
-        
-                    
                     {this.props.reduxStore.poll.map((item, i) =>
-                    <>
-                        <p key={i}>Question: {item.question}</p>
+                        <>
+                            <p key={i}><b>Question {i + 1}: {item.question}</b></p>
                         <PollItem options={item.options}/>
                         </>
                     )}
