@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
-
-
-// GalleryItem is not getting anything from redux, getting props from parent
 class PollItem extends Component {
 
 
@@ -19,15 +15,13 @@ class PollItem extends Component {
 
 
     render() {
-        console.log(this.props.options);
-        // //define item to make code more concise
-        // let item = this.props.item;
+       
         return (
             <div>
-               {this.props.options.map(item => 
-                <p>{item}</p>
+               {this.props.options.map((item, i) => 
+                <p>{i+1}:{item}</p>
                 )}
-                {JSON.stringify(this.props.options)}
+                {/* {JSON.stringify(this.props.options)} */}
             </div>
         );
     }

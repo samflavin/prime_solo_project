@@ -1,4 +1,4 @@
-const poll = (state = [{options: []}], action) => {
+const poll = (state = [], action) => {
 
     switch (action.type) {
         case 'PREP_POLL':

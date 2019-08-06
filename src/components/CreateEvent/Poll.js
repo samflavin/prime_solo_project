@@ -72,8 +72,8 @@ class Poll extends Component {
         return (
 
             <>
-                <h1>Create a Poll Quest for your Guests</h1>
-                <h4>Create options for them to vote on too!</h4>
+                <h2>Create a Poll Quest for your Guests</h2>
+                <h5>Create options for them to vote on too!</h5>
                 <section>
 
                     <label><span className="required">Question:</span></label>
@@ -86,23 +86,23 @@ class Poll extends Component {
                     <input type="text" value={this.state.optionInput}
                         onChange={(event) => this.handleChangeForOptions(event, 'optionInput')} />
                         <button onClick={this.addOption}>Add Option</button>
-                            <h3>{this.state.newItem.options.map( (item, i)  => 
+                            <h2>{this.state.newItem.options.map( (item, i)  => 
                                     <p key={i}>{item}</p>
-                                )}</h3>
+                                )}</h2>
 
 
                         <br />
                         <button type="submit" value="submit" onClick={this.handleSubmit}>Create Poll</button>
                 </section>
                         <br />
-                        {JSON.stringify(this.props.reduxStore.poll)}
+                        {/* {JSON.stringify(this.props.reduxStore.poll)} */}
                         <section>
-                    <p>{this.props.reduxStore.poll.question} {this.props.reduxStore.poll.options}</p>
+        
                     
                     {this.props.reduxStore.poll.map((item, i) =>
                     <>
-                        <p key={i}>{item.question}</p>
-                        <PollItem options={item.options} key={i} />
+                        <p key={i}>Question: {item.question}</p>
+                        <PollItem options={item.options}/>
                         </>
                     )}
                         </section>
