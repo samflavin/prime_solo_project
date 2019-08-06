@@ -1,8 +1,8 @@
-const poll = (state = {}, action) => {
+const poll = (state = [], action) => {
 
     switch (action.type) {
         case 'PREP_POLL':
-            return action.payload;
+            return [...state, action.payload];
         default:
             return state;
     }

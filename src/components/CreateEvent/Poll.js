@@ -51,7 +51,18 @@ class Poll extends Component {
 
     handleSubmit = () => {
         console.log('youve clicked submit form');
-      this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
+      this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem });
+      // clear out state for more polls
+        this.setState({
+            newItem:{
+            question: '',
+            options: []
+            },
+            optionInput: ''
+        });
+        console.log(this.state)
+
+
     }
 
     render() {
@@ -85,7 +96,7 @@ class Poll extends Component {
                         <br />
                         {JSON.stringify(this.props.reduxStore.poll)}
                         <section>
-                            
+
                         </section>
 
                         
