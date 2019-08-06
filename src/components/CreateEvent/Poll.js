@@ -49,6 +49,11 @@ class Poll extends Component {
         this.props.history.push('/description');
     }
 
+    handleSubmit = () => {
+        console.log('youve clicked submit form');
+      this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
+    }
+
     render() {
         console.log(this.state)
 
@@ -57,7 +62,7 @@ class Poll extends Component {
             <>
                 <h1>Create a Poll Quest for your Guests</h1>
                 <h4>Create options for them to vote on too!</h4>
-                <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
+                <section>
 
                     <label><span className="required">Question:</span></label>
                     <input type="text" value={this.state.newItem.question}
@@ -75,10 +80,16 @@ class Poll extends Component {
 
 
                         <br />
-                        <button type="submit" value="submit">Create Poll</button>
+                        <button type="submit" value="submit" onClick={this.handleSubmit}>Create Poll</button>
+                </section>
+                        <br />
+                        {JSON.stringify(this.props.reduxStore.poll)}
+                        <section>
+                            
+                        </section>
 
                         
-                </section>
+                
 
             </>
 
