@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 
 class AddGuests extends Component {
@@ -26,6 +28,9 @@ class AddGuests extends Component {
 
                 <h1>Add Guests</h1>
 
+            {JSON.stringify(this.props.reduxStore.guests)}
+
+
                 &nbsp;
             <button onClick={this.handleBack}>Back</button>
                 &nbsp;
@@ -36,4 +41,9 @@ class AddGuests extends Component {
     }
 }
 
-export default AddGuests;
+const putReduxStoreOnProps = (reduxStore) => ({
+    reduxStore
+})
+
+
+export default connect(putReduxStoreOnProps)(AddGuests);
