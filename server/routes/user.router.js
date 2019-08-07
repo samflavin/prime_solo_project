@@ -25,18 +25,6 @@ router.post('/register', (req, res, next) => {
     .catch(() => res.sendStatus(500));
 });
 
-//gets all guests
-router.get('/addGuests', (req, res) => {
-  const sqlText = `select * from user order by id`;
-  pool.query(sqlText)
-    .then((response) => {
-      res.send(response.rows)
-    })
-    .catch((error) => {
-      console.log(`error getting movies`, error);
-      res.sendStatus(500)
-    })
-});
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

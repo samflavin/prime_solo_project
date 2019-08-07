@@ -2,9 +2,10 @@ import { put, takeEvery } from 'redux-saga/effects';
 import Axios from 'axios';
 
 function* fetchGuests(action) {
+    console.log('in fetchGuests')
     try {
-        const response = yield Axios.get('/api/user/addGuests');
-        yield put({ type: 'SET_GUESTS', payload: response.data })
+        const response = yield Axios.get('/api/guests');
+        yield put({ type: 'SET_GUESTS', payload: response.data})
         console.log(response.data)
 
     } catch (error) {

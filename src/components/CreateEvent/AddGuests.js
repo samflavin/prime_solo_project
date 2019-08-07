@@ -19,6 +19,9 @@ class AddGuests extends Component {
         // Then programmatically  nav back to poll
         this.props.history.push('/poll');
     }
+    inviteGuest = (event) => {
+        console.log(this.item.id)
+    }
 
 
 
@@ -27,8 +30,13 @@ class AddGuests extends Component {
             <div>
 
                 <h1>Add Guests</h1>
-
-            {JSON.stringify(this.props.reduxStore.guests)}
+                
+           <ul>
+            {/* {JSON.stringify(this.props.reduxStore.guests)} */}
+                {this.props.reduxStore.guests.map((item, i) =>
+                    <li>{item.username}<button onClick={this.inviteGuest}>Invite</button></li>
+                )}
+                </ul>
 
 
                 &nbsp;
