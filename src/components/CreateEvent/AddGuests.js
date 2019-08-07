@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class AddGuests extends Component {
 
     state = {
-        invitees: []
+        invitees: [],
     }
 
     componentDidMount() {
@@ -24,27 +24,44 @@ class AddGuests extends Component {
         this.props.history.push('/poll');
     }
 
+    change = (item) => {
+        console.log(item)
+
+    }
+
     //sets state of invited guests
     inviteGuest = (item) => {
         console.log(`You're invitation has been sent`);
         this.props.dispatch({ type: 'PREP_INVITEES', payload: item.id });
-        // clear out state for next round
-
-
-    //     console.log(item.id);
-    //   this.state.invitees.push(item.id)
-    //    console.log(this.state)
     }
 
-    send = () => {
-        console.log(`You're invitation has been sent`);
-        this.props.dispatch({ type: 'PREP_INVITEES', payload: this.state.invitees });
-        // clear out state for next round
-        this.setState({
-            invitees: []
-        });
-        console.log('remember to clear state')
+    uninviteGuest = (item) => {
+        console.log(`You're invitation has been revoked`);
+        this.props.dispatch({ type: 'ALTER_INVITEES', payload: item.id });
     }
+
+
+    
+
+
+    checkStatus = (user) => {
+       
+        if (!this.props.reduxStore.invitees.includes(user.id)){
+          return   <button onClick={(event) => this.inviteGuest(user)}>Invite</button>
+        } else {
+    
+       return  <button onClick={(event) => this.uninviteGuest(user)}>Uninvite</button>
+    }
+}
+    // send = () => {
+    //     console.log(`You're invitation has been sent`);
+    //     this.props.dispatch({ type: 'PREP_INVITEES', payload: this.state.invitees });
+    //     // clear out state for next round
+    //     this.setState({
+    //         invitees: []
+    //     });
+    //     console.log('remember to clear state')
+    // }
 
 
 
@@ -56,13 +73,13 @@ class AddGuests extends Component {
                 <h1>Add Guests</h1>
                 
            <ul>
-            {/* {JSON.stringify(this.props.reduxStore.guests)} */}
+            {JSON.stringify(this.props.reduxStore.invitees)}
                 {this.props.reduxStore.guests.map((item, i) =>
-                    <li>{item.username}<button onClick={(event) => this.inviteGuest(item)}>Invite</button></li>
+                    <li>{item.username}{this.checkStatus(item)}</li>
                 )}
                 </ul>
-
-            <button onClick={this.send}>Send</button>
+                
+            {/* <button onClick={this.send}>Send</button> */}
                 <hr />
                 &nbsp;
             <button onClick={this.handleBack}>Back</button>

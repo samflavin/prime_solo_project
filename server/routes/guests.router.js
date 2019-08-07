@@ -19,6 +19,8 @@ router.get('/', (req, res) => {
         })
 });
 
+
+//
 router.post('/:id', (req, res) => {
 console.log(req.params)
     const sqlText = `INSERT INTO invitees ("user_id") 
@@ -34,6 +36,22 @@ console.log(req.params)
             })
         
     });
+
+router.delete('/:id', (req, res) => {
+    console.log(req.params)
+    const sqlText = `DELETE FROM invitees WHERE 
+      user_id = $1`;
+    pool.query(sqlText, [req.params.id])
+        .then((response) => {
+            console.log(`removed invitee database`, response)
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error uninviting guest`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+
+});
 
 
     

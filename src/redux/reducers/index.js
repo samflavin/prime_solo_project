@@ -4,7 +4,8 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import description from './descriptionReducer'  //import from reducer
 import poll from './pollReducer';
-import guests from './fetchGuestsReducer'
+import guests from './fetchGuestsReducer';
+import invitees from './setInviteesReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   description, //puts description in redux
   poll, //holds poll info in redux
-  guests //holds guests from db in redux
+  guests, //holds guests from db in redux
+  invitees//holds invited guests in redux
 });
 
 export default rootReducer;
