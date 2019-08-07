@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 
 class AddGuests extends Component {
 
+    state = {
+        invitees: []
+    }
+
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_GUESTS' })
     }
@@ -19,9 +23,29 @@ class AddGuests extends Component {
         // Then programmatically  nav back to poll
         this.props.history.push('/poll');
     }
-    inviteGuest = (event) => {
-        console.log(this.item.id)
+
+    //sets state of invited guests
+    inviteGuest = (item) => {
+        console.log(`You're invitation has been sent`);
+        this.props.dispatch({ type: 'PREP_INVITEES', payload: item.id });
+        // clear out state for next round
+
+
+    //     console.log(item.id);
+    //   this.state.invitees.push(item.id)
+    //    console.log(this.state)
     }
+
+    send = () => {
+        console.log(`You're invitation has been sent`);
+        this.props.dispatch({ type: 'PREP_INVITEES', payload: this.state.invitees });
+        // clear out state for next round
+        this.setState({
+            invitees: []
+        });
+        console.log('remember to clear state')
+    }
+
 
 
 
@@ -34,11 +58,12 @@ class AddGuests extends Component {
            <ul>
             {/* {JSON.stringify(this.props.reduxStore.guests)} */}
                 {this.props.reduxStore.guests.map((item, i) =>
-                    <li>{item.username}<button onClick={this.inviteGuest}>Invite</button></li>
+                    <li>{item.username}<button onClick={(event) => this.inviteGuest(item)}>Invite</button></li>
                 )}
                 </ul>
 
-
+            <button onClick={this.send}>Send</button>
+                <hr />
                 &nbsp;
             <button onClick={this.handleBack}>Back</button>
                 &nbsp;
