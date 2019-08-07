@@ -14,11 +14,24 @@ function* sendInvites(action) {
     }
 }
 
+function* getInvitees() {
+    console.log('in getInvites')
+    try {
+       const response = yield Axios.get(`/api/guests/invitees`);
+        console.log('HELLLPOPPPPPP', response.data);
+        yield put({ type: 'UPDATE_INVITEES', payload: response.data})
+        
+    } catch (error) {
+        console.log('Error with sending invitees to DB:', error);
+        // yield put({ type: 'REGISTRATION_FAILED' });
+    }
+}
+
 function* revokeInvites(action) {
-    console.log('in sendInvites', action.payload)
+    console.log('in revokeInvites', action.payload)
     try {
         yield Axios.delete(`/api/guests/${action.payload}`);
-        yield put({ type: 'SET_INVITEES', payload: action.payload })
+        yield put({ type: 'GET_INVITEES'})
 
 
     } catch (error) {
@@ -31,6 +44,7 @@ function* revokeInvites(action) {
 function* prepInviteesSaga() {
     yield takeEvery('PREP_INVITEES', sendInvites);
     yield takeEvery('ALTER_INVITEES', revokeInvites);
+    yield takeEvery('GET_INVITEES', getInvitees);
 }
 
 export default prepInviteesSaga;

@@ -47,10 +47,23 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(201);
         })
         .catch((error) => {
-            console.log(`Error uninviting guest`, error);
+            console.log(`Error  ${sqlText}`, error);
             res.sendStatus(500); // Good server always responds
         })
 
+});
+
+router.get('/invitees', (req, res) => {
+    const sqlText = `select user_id from invitees`;
+    pool.query(sqlText)
+        .then((response) => {
+            console.log(response.rows)
+            res.send(response.rows)
+        })
+        .catch((error) => {
+            console.log(`error getting guests`, error);
+            res.sendStatus(500)
+        })
 });
 
 
