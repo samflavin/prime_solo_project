@@ -97,7 +97,9 @@ class Poll extends Component {
                         <button type="submit" value="submit" onClick={()=> this.handleSubmit(this.props.reduxStore.event)}>Create Poll</button>
                 </section>
                         <br />
-                        {JSON.stringify(this.props.reduxStore.poll)}
+                        {/* {JSON.stringify(this.props.reduxStore.poll.question)}
+                {JSON.stringify(this.props.reduxStore.poll.options)} */}
+                {JSON.stringify(this.props.reduxStore.poll)}
                         <section>
                     {/* {this.props.reduxStore.poll.map((item, i) =>
                         <>

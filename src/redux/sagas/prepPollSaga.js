@@ -9,7 +9,7 @@ function* poll(action) {
 
         const response = yield Axios.post('/api/poll', action.payload);
         console.log(response.data);
-        yield put({ type: 'GET_POLL'})
+        yield put({ type: 'GET_POLL', payload: action.payload.eventId})
 
 
     } catch (error) {
@@ -18,9 +18,9 @@ function* poll(action) {
     }
 }
 // gets poll
-function* updatePoll() {
+function* updatePoll(action) {
     try {
-        const response = yield Axios.get('/api/poll');
+        const response = yield Axios.get(`/api/poll/${action.payload}`);
         console.log(response.data);
         yield put({ type: 'SET_POLL', payload: response.data })
 

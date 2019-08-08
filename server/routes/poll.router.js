@@ -24,13 +24,13 @@ router.post('/', (req, res) => {
 
 
 //GET route
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
     console.log(req.params)
-    const sqlText = `select * from polls;`;
-    pool.query(sqlText)
+    const sqlText = `select * from polls where "eventId" =$1;`;
+    pool.query(sqlText,[req.params.id])
         .then((response) => {
-            console.log(`got event info`, response.data)
-            res.send(response.data);
+            console.log(`got event info`, response.rows, 'req.params.id', req.params.id)
+            res.send(response.rows);
         })
         .catch((error) => {
             console.log(`Error getting events from db`, error);
