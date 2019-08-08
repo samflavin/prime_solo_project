@@ -45,8 +45,8 @@ class AddGuests extends Component {
 
 
     checkStatus = (user) => {
-       
-        if (!this.props.reduxStore.invitees.includes(user.id)){
+       console.log(user, this.props.reduxStore.invitees)
+        if (!this.props.reduxStore.invitees.find(invitee=> invitee.user_id === user.id)){
           return   <button onClick={(event) => this.inviteGuest(user)}>Invite</button>
         } else {
     
