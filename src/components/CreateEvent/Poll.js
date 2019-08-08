@@ -9,7 +9,8 @@ class Poll extends Component {
     state = {
         newItem: {
             question: '',
-            options: []
+            options: [],
+            eventId: this.props.reduxStore.event
         },
         optionInput: ''
     }
@@ -57,7 +58,8 @@ class Poll extends Component {
         this.setState({
             newItem:{
             question: '',
-            options: []
+            options: [],
+            eventId: ''
             },
             optionInput: ''
         });
@@ -75,7 +77,7 @@ class Poll extends Component {
                 <h2>Create a Poll Quest for your Guests</h2>
                 <h5>Create options for them to vote on too!</h5>
                 <section>
-{JSON.stringify(this.props.reduxStore)}
+{JSON.stringify(this.props.reduxStore.event)}
                     <label><span className="required">Question:</span></label>
                     <input type="text" value={this.state.newItem.question}
                         onChange={(event) => this.handleChangeFor(event, 'question')} />
