@@ -24,11 +24,11 @@ const router = express.Router();
 router.post('/', (req, res) => {
     console.log(req.body)
     const sqlText = `INSERT INTO event ("userId", "eventName", "description") 
-      VALUES ($1, $2, $3)`;
+      VALUES ($1, $2, $3) RETURNING id`;
     pool.query(sqlText, [req.body.userId, req.body.eventName, req.body.description])
         .then((response) => {
-            console.log(`Added event to the database`, response)
-            res.sendStatus(201);
+            console.log(`Added event to the database`, response.rows[0])
+            res.send(response.rows[0]);
         })
         .catch((error) => {
             console.log(`Error creating event in db`, error);

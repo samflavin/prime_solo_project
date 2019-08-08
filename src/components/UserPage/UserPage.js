@@ -12,7 +12,6 @@ class UserPage extends Component {
 
 
   handleClick = () => {
-    //this.props.dispatch({ type: 'NEW_EVENT', payload: this.props.user.id })
 
     this.props.history.push('/description');
   }

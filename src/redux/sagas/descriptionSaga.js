@@ -6,9 +6,9 @@ function* description(action) {
         console.log('in description saga, action.payload is', action.payload)
 
         const response = yield Axios.post('/api/events', action.payload );
-        console.log(response.data)
-        yield put({ type: 'SET_GUESTS', payload: response.data })
-        console.log(response.data)
+        console.log(response.data.id);
+        yield put({ type: 'SET_EVENTID', payload: response.data.id })
+    
 
     } catch (error) {
         console.log('Error with getting users:', error);
