@@ -7,6 +7,7 @@ class Description extends Component {
     
     state = {
         newItem: {
+            title:'',
             description: '' 
         }
     }
@@ -38,11 +39,19 @@ class Description extends Component {
 
 
     render() {
+        console.log(this.state);
         return (
             <div>
 
                 <h1>Description</h1>
                 <h4>Tell your guests about the event to which they're being invited!</h4>
+
+                <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
+
+                    <label><span className="required">Title of event:</span></label>
+                    <input type="text" value={this.state.newItem.title}
+                        onChange={(event) => this.handleChangeFor(event, 'title')} />
+                </section>
 
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 
 class Submit extends Component {
@@ -23,6 +25,11 @@ class Submit extends Component {
             <div>
 
                 <h1>Review and Submit</h1>
+                
+                {JSON.stringify(this.props.reduxStore)}
+            <div>
+                    <p> {this.props.reduxStore.description}</p> 
+            </div>
 
                 &nbsp;
             <button onClick={this.handleBack}>Back</button>
@@ -35,4 +42,9 @@ class Submit extends Component {
     }
 }
 
-export default Submit;
+const putReduxStoreOnProps = (reduxStore) => ({
+    reduxStore
+})
+
+
+export default connect(putReduxStoreOnProps)(Submit);

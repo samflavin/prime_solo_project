@@ -18,7 +18,7 @@ function* getInvitees() {
     console.log('in getInvites')
     try {
        const response = yield Axios.get(`/api/guests/invitees`);
-        console.log('HELLLPOPPPPPP', response.data);
+        console.log('in get invitees saga', response.data);
         yield put({ type: 'UPDATE_INVITEES', payload: response.data})
         
     } catch (error) {

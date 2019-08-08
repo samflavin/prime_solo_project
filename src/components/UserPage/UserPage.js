@@ -9,9 +9,11 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 class UserPage extends Component {
 
 
+
+
   handleClick = () => {
-    // Do javascript fun stuff?
-    alert('Going to create Event');
+    this.props.dispatch({ type: 'NEW_EVENT', payload: this.props.user.id })
+
 
     // Then programmatically  nav back to home
     this.props.history.push('/description');
@@ -26,6 +28,7 @@ class UserPage extends Component {
     <h1 id="welcome">
       Welcome, { this.props.user.username }!
     </h1>
+    {JSON.stringify(this.props)}
 
     <p>Your ID is: {this.props.user.id}</p>
     <main className="App">
