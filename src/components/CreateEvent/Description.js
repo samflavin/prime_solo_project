@@ -5,12 +5,15 @@ import { connect } from 'react-redux';
 
 class Description extends Component {
     
+
     state = {
         newItem: {
-            title:'',
-            description: '' 
+            eventName:'',
+            description: '',
+            userId: this.props.reduxStore.user.id 
         }
-    }
+        }
+
 
     handleChangeFor = (event, property) => {
         this.setState({
@@ -24,9 +27,6 @@ class Description extends Component {
     handleClick = () => {
         //dispatch to saga to put description in redux
         this.props.dispatch({ type: 'PREP_DESCRIPTION', payload: this.state.newItem  })
-
-
-        // Then programmatically  nav back to home
         this.props.history.push('/poll');
     }
 
@@ -39,18 +39,19 @@ class Description extends Component {
 
 
     render() {
-        console.log(this.state);
+       
+      
         return (
             <div>
-
+{JSON.stringify(this.props.reduxStore)}
                 <h1>Description</h1>
                 <h4>Tell your guests about the event to which they're being invited!</h4>
 
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
 
-                    <label><span className="required">Title of event:</span></label>
-                    <input type="text" value={this.state.newItem.title}
-                        onChange={(event) => this.handleChangeFor(event, 'title')} />
+                    <label><span className="required">Name of event:</span></label>
+                    <input type="text" value={this.state.newItem.eventName}
+                        onChange={(event) => this.handleChangeFor(event, 'eventName')} />
                 </section>
 
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
@@ -71,6 +72,7 @@ class Description extends Component {
         )
     }
 }
+
 
 const putReduxStoreOnProps = (reduxStore) => ({
     reduxStore

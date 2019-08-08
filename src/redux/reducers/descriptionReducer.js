@@ -1,7 +1,7 @@
-const description = (state = 'here is the description', action) => {
+const description = (state = [], action) => {
 
     switch (action.type) {
-        case 'PREP_DESCRIPTION':
+        case 'SET_DESCRIPTION':
             return action.payload;
         default:
             return state;

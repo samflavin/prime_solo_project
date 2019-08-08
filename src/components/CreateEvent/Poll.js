@@ -68,15 +68,14 @@ class Poll extends Component {
     
 
     render() {
-        console.log(this.state)
-        console.log(this.props.reduxStore.poll)
+        
         return (
 
             <>
                 <h2>Create a Poll Quest for your Guests</h2>
                 <h5>Create options for them to vote on too!</h5>
                 <section>
-
+{JSON.stringify(this.props.reduxStore)}
                     <label><span className="required">Question:</span></label>
                     <input type="text" value={this.state.newItem.question}
                         onChange={(event) => this.handleChangeFor(event, 'question')} />

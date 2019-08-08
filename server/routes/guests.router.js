@@ -27,7 +27,7 @@ console.log(req.params)
       VALUES ($1)`;
         pool.query(sqlText, [req.params.id])
             .then((response) => {
-                console.log(`Added guestto the database`, response)
+                console.log(`Added guest to the database`, response)
                 res.sendStatus(201);
             })
             .catch((error) => {

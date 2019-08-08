@@ -12,10 +12,8 @@ class UserPage extends Component {
 
 
   handleClick = () => {
-    this.props.dispatch({ type: 'NEW_EVENT', payload: this.props.user.id })
+    //this.props.dispatch({ type: 'NEW_EVENT', payload: this.props.user.id })
 
-
-    // Then programmatically  nav back to home
     this.props.history.push('/description');
   }
 
