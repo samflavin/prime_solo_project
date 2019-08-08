@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PollItem from './pollItem/PollItem';
+//import PollItem from './pollItem/PollItem';
 
 
 
@@ -10,7 +10,8 @@ class Poll extends Component {
         newItem: {
             question: '',
             options: [],
-            eventId: this.props.reduxStore.event
+            // eventId: this.props.reduxStore.event
+        
         },
         optionInput: ''
     }
@@ -41,28 +42,28 @@ class Poll extends Component {
 
 
     handleClick = () => {
-        this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
+        // this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
         this.props.history.push('/addGuest');
     }
 
     handleBack = () => {
-        // Then programmatically  nav back to home
+      
         this.props.history.push('/description');
     }
 
-    handleSubmit = () => {
+    //sends over polling info to db
+    handleSubmit = (eventId) => {
         console.log('youve clicked submit form');
-      this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem });
+      this.props.dispatch({ type: 'PREP_POLL', payload: { question: this.state.newItem.question, options: this.state.newItem.options, eventId: eventId }});
       // clear out state for more polls
         this.setState({
             newItem:{
             question: '',
             options: [],
-            eventId: ''
+           
             },
             optionInput: ''
         });
-        console.log(this.state)
 
     }
 
@@ -93,17 +94,17 @@ class Poll extends Component {
 
 
                         <br />
-                        <button type="submit" value="submit" onClick={this.handleSubmit}>Create Poll</button>
+                        <button type="submit" value="submit" onClick={()=> this.handleSubmit(this.props.reduxStore.event)}>Create Poll</button>
                 </section>
                         <br />
-                        {/* {JSON.stringify(this.props.reduxStore.poll)} */}
+                        {JSON.stringify(this.props.reduxStore.poll)}
                         <section>
-                    {this.props.reduxStore.poll.map((item, i) =>
+                    {/* {this.props.reduxStore.poll.map((item, i) =>
                         <>
                             <p key={i}><b>Question {i + 1}: {item.question}</b></p>
                         <PollItem options={item.options}/>
                         </>
-                    )}
+                    )} */}
                         </section>
                 <br />
                 <button onClick={this.handleBack}>Back</button>

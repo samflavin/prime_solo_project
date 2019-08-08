@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-//
+//POST route
 router.post('/', (req, res) => {
     console.log(req.body)
     const sqlText = `INSERT INTO polls ("question", "options", "eventId") 
@@ -22,20 +22,22 @@ router.post('/', (req, res) => {
 
 });
 
-// router.get('/:id', (req, res) => {
-//     console.log(req.params)
-//     const sqlText = `select event.id from event where "userId"=$1`;
-//     pool.query(sqlText, [req.params.id])
-//         .then((response) => {
-//             console.log(`got event info`, response.rows)
-//             res.send(response.rows);
-//         })
-//         .catch((error) => {
-//             console.log(`Error getting events from db`, error);
-//             res.sendStatus(500); // Good server always responds
-//         })
 
-// });
+//GET route
+router.get('/', (req, res) => {
+    console.log(req.params)
+    const sqlText = `select * from polls;`;
+    pool.query(sqlText)
+        .then((response) => {
+            console.log(`got event info`, response.data)
+            res.send(response.data);
+        })
+        .catch((error) => {
+            console.log(`Error getting events from db`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+
+});
 
 
 
