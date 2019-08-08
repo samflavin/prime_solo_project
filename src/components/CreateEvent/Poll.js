@@ -37,12 +37,11 @@ class Poll extends Component {
         this.setState({
             optionInput: ''
         })
-        console.log(this.state)
     }
 
 
     handleClick = () => {
-
+        this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
         this.props.history.push('/addGuest');
     }
 

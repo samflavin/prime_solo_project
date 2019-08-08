@@ -12,6 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const guestRouter = require('./routes/guests.router');
 const eventsRouter = require('./routes/events.router');
+const pollRouter = require('./routes/poll.router')
 
 
 
@@ -30,6 +31,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/guests', guestRouter);
 app.use('/api/events', eventsRouter);
+app.use('/api/poll', pollRouter)
 
 
 // Serve static files
