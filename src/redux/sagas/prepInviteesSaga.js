@@ -2,10 +2,10 @@ import {put, takeEvery } from 'redux-saga/effects';
 import Axios from 'axios';
 
 function* sendInvites(action) {
-    console.log('in sendInvites', action.payload)
+    console.log('in sendInvites', action.payload.eventId)
     try {
-        yield Axios.post(`/api/guests/${action.payload}`);
-        yield put({ type: 'SET_INVITEES', payload: action.payload })
+        yield Axios.post(`/api/guests/${action.payload.userId}`, action.payload);
+        yield put({ type:'GET_INVITEES'})
        
 
     } catch (error) {
@@ -15,7 +15,6 @@ function* sendInvites(action) {
 }
 
 function* getInvitees() {
-    console.log('in getInvites')
     try {
        const response = yield Axios.get(`/api/guests/invitees`);
         console.log('in get invitees saga', response.data);

@@ -24,17 +24,12 @@ class AddGuests extends Component {
         this.props.history.push('/poll');
     }
 
-    change = (item) => {
-        console.log(item)
-
-    }
-
     //sets state of invited guests
     inviteGuest = (item) => {
-        console.log(`You're invitation has been sent`);
-        this.props.dispatch({ type: 'PREP_INVITEES', payload: item.id });
+        console.log(`You're invitation has been sent`, item);
+        this.props.dispatch({ type: 'PREP_INVITEES', payload:{ eventId: this.props.reduxStore.poll[0].eventId, userId: item.id}});
     }
-
+    // item.id 
     uninviteGuest = (item) => {
         console.log(`You're invitation has been revoked`);
         this.props.dispatch({ type: 'ALTER_INVITEES', payload: item.id });
@@ -45,7 +40,7 @@ class AddGuests extends Component {
 
 
     checkStatus = (user) => {
-       console.log(user, this.props.reduxStore.invitees)
+       
         if (!this.props.reduxStore.invitees.find(invitee=> invitee.user_id === user.id)){
           return   <button onClick={(event) => this.inviteGuest(user)}>Invite</button>
         } else {
@@ -73,7 +68,10 @@ class AddGuests extends Component {
                 <h1>Add Guests</h1>
                 
            <ul>
+               
             {JSON.stringify(this.props.reduxStore.invitees)}
+                    {JSON.stringify(this.props.reduxStore.poll)}
+
                 {this.props.reduxStore.guests.map((item, i) =>
                     <li>{item.username}{this.checkStatus(item)}</li>
                 )}

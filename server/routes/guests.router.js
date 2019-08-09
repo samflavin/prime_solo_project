@@ -22,10 +22,9 @@ router.get('/', (req, res) => {
 
 //
 router.post('/:id', (req, res) => {
-console.log(req.params)
-    const sqlText = `INSERT INTO invitees ("user_id") 
-      VALUES ($1)`;
-        pool.query(sqlText, [req.params.id])
+    const sqlText = `INSERT INTO invitees ("user_id", "event_id")
+      VALUES ($1, $2)`;
+        pool.query(sqlText, [req.params.id, req.body.eventId])
             .then((response) => {
                 console.log(`Added guest to the database`, response)
                 res.sendStatus(201);
