@@ -37,7 +37,14 @@ class Submit extends Component {
                     <p> Welcome to {this.props.reduxStore.user.username}'s Event, {this.props.reduxStore.description.event_name} !</p> 
 
                     <p> description:{this.props.reduxStore.description.description}</p> 
-                
+                    <ul> GuestList:
+                    {this.props.reduxStore.invitees.map((item, i) =>
+                       
+                            <li key={i}>{item.username}</li>
+                        
+                       
+                    )}
+                    </ul>
             </div>
 
                 &nbsp;

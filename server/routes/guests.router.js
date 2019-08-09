@@ -54,7 +54,7 @@ router.delete('/revoke', (req, res) => {
 
 router.get('/invitees', (req, res) => {
     console.log(req.query.id)
-    const sqlText = `select user_id from invitees where event_id=$1`;
+    const sqlText = `select username from invitees join "user" on "user"."id" = "invitees"."user_id" where event_id=$1`;
     pool.query(sqlText, [req.query.id])
         .then((response) => {
             console.log(response.rows[0])

@@ -2,7 +2,7 @@ const invitees = (state = [], action) => {
 
     switch (action.type) {
         case 'SET_INVITEES':
-            return [...state, {user_id: action.payload}];
+            return action.payload;
         case 'UPDATE_INVITEES':
             return action.payload;
         default:
