@@ -65,7 +65,7 @@ class App extends Component {
             {/*adding routes fore create event stepbystep*/}
             <Route Description path="/description" component={Description} />
             <Route Poll path="/poll" component={Poll} />
-            <Route AddGuests path="/addGuest" component={AddGuests} />
+            <Route AddGuests path="/addGuest/:id" component={AddGuests} />
             <Route Submit path="/submit/:id" component={Submit} />
 
 

@@ -36,11 +36,11 @@ router.post('/:id', (req, res) => {
         
     });
 
-router.delete('/:id', (req, res) => {
-    console.log(req.params)
+router.delete('/revoke', (req, res) => {
+    console.log('in router delete req.body:', req.query)
     const sqlText = `DELETE FROM invitees WHERE 
-      user_id = $1`;
-    pool.query(sqlText, [req.params.id])
+      user_id = $1 and event_id =$2`;
+    pool.query(sqlText, [req.query.user_id, req.query.event_id])
         .then((response) => {
             console.log(`removed invitee database`, response)
             res.sendStatus(201);
@@ -53,14 +53,15 @@ router.delete('/:id', (req, res) => {
 });
 
 router.get('/invitees', (req, res) => {
-    const sqlText = `select user_id from invitees`;
-    pool.query(sqlText)
+    console.log(req.query.id)
+    const sqlText = `select user_id from invitees where event_id=$1`;
+    pool.query(sqlText, [req.query.id])
         .then((response) => {
-            console.log(response.rows)
+            console.log(response.rows[0])
             res.send(response.rows)
         })
         .catch((error) => {
-            console.log(`error getting guests`, error);
+            console.log(`error UPDATIND GUESTLIST`, error);
             res.sendStatus(500)
         })
 });

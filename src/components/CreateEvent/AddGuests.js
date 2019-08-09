@@ -33,7 +33,7 @@ class AddGuests extends Component {
     // item.id 
     uninviteGuest = (item) => {
         console.log(`You're invitation has been revoked`);
-        this.props.dispatch({ type: 'ALTER_INVITEES', payload: item.id });
+        this.props.dispatch({ type: 'ALTER_INVITEES', payload: { eventId: this.props.reduxStore.event, userId: item.id } });
     }
 
 

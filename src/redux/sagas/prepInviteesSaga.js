@@ -5,7 +5,7 @@ function* sendInvites(action) {
     console.log('in sendInvites', action.payload.eventId)
     try {
         yield Axios.post(`/api/guests/${action.payload.userId}`, action.payload);
-        yield put({ type:'GET_INVITEES'})
+        yield put({ type:'GET_INVITEES', payload: action.payload.eventId})
        
 
     } catch (error) {
@@ -14,10 +14,9 @@ function* sendInvites(action) {
     }
 }
 
-function* getInvitees() {
+function* getInvitees(action) {
     try {
-       const response = yield Axios.get(`/api/guests/invitees`);
-        console.log('in get invitees saga', response.data);
+       const response = yield Axios.get(`/api/guests/invitees?id=${action.payload}`);
         yield put({ type: 'UPDATE_INVITEES', payload: response.data})
         
     } catch (error) {
@@ -27,10 +26,11 @@ function* getInvitees() {
 }
 
 function* revokeInvites(action) {
-    console.log('in revokeInvites', action.payload)
     try {
-        yield Axios.delete(`/api/guests/${action.payload}`);
-        yield put({ type: 'GET_INVITEES'})
+        console.log('in revokeInvites saga action.payload', action.payload)
+
+        yield Axios.delete(`/api/guests/revoke?user_id=${action.payload.userId}&event_id=${action.payload.eventId}`, action.payload);
+        yield put({ type: 'GET_INVITEES', payload: action.payload.eventId})
 
 
     } catch (error) {

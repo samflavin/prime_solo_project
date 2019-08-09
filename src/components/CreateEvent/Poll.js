@@ -43,7 +43,7 @@ class Poll extends Component {
 
     handleClick = () => {
         // this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
-        this.props.history.push('/addGuest');
+        this.props.history.push(`/addGuest/${this.props.reduxStore.event}`);
     }
 
     handleBack = () => {
