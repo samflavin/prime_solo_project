@@ -66,7 +66,7 @@ class App extends Component {
             <Route Description path="/description" component={Description} />
             <Route Poll path="/poll" component={Poll} />
             <Route AddGuests path="/addGuest" component={AddGuests} />
-            <Route Submit path="/submit" component={Submit} />
+            <Route Submit path="/submit/:id" component={Submit} />
 
 
           

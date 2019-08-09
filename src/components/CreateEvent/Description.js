@@ -8,7 +8,7 @@ class Description extends Component {
 
     state = {
         newItem: {
-            eventName:'',
+            event_name:'',
             description: '',
             userId: this.props.reduxStore.user.id 
         }
@@ -50,8 +50,8 @@ class Description extends Component {
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
 
                     <label><span className="required">Name of event:</span></label>
-                    <input type="text" value={this.state.newItem.eventName}
-                        onChange={(event) => this.handleChangeFor(event, 'eventName')} />
+                    <input type="text" value={this.state.newItem.event_name}
+                        onChange={(event) => this.handleChangeFor(event, 'event_name')} />
                 </section>
 
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >

@@ -11,11 +11,12 @@ class AddGuests extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_GUESTS' })
+        console.log(this.props.reduxStore.event)
     }
 
     handleClick = () => {
         // Then programmatically  nav back to home
-        this.props.history.push('/submit');
+        this.props.history.push(`/submit/${this.props.reduxStore.event}`);
     }
 
     handleBack = () => {

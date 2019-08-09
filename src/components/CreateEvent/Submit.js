@@ -13,6 +13,11 @@ class Submit extends Component {
         this.props.history.push('/home');
     }
 
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_DESCRIPTION', payload:this.props.match.params.id});
+
+    }
+
     handleBack = () => {
         // Do javascript fun stuff?
         alert('Going back');
@@ -21,6 +26,7 @@ class Submit extends Component {
         this.props.history.push('/addGuest');
     }
     render() {
+        console.log(this.props.reduxStore.description)
         return (
             <div>
 
@@ -28,11 +34,10 @@ class Submit extends Component {
                 
                 {JSON.stringify(this.props.reduxStore)}
             <div>
-                    <p> Welcome to {this.props.reduxStore.user.username}'s Event!</p> 
+                    <p> Welcome to {this.props.reduxStore.user.username}'s Event, {this.props.reduxStore.description.event_name} !</p> 
 
-                    <p> poll:{this.props.reduxStore.poll[0].question}</p> 
-                    {/* <p> description:{this.props.reduxStore.description}</p> 
-                    <p> event:{this.props.reduxStore.event}</p>  */}
+                    <p> description:{this.props.reduxStore.description.description}</p> 
+                
             </div>
 
                 &nbsp;
