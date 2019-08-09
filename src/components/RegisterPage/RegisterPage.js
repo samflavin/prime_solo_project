@@ -18,6 +18,8 @@ class RegisterPage extends Component {
         payload: {
           username: this.state.username,
           password: this.state.password,
+          phoneNumber: this.state.phoneNumber,
+          email: this.state.email,
         },
       });
     } else {
@@ -32,6 +34,7 @@ class RegisterPage extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
         {this.props.errors.registrationMessage && (

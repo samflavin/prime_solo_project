@@ -28,8 +28,10 @@ class Submit extends Component {
                 
                 {JSON.stringify(this.props.reduxStore)}
             <div>
-                    {/* <p> poll:{this.props.reduxStore.poll}</p> 
-                    <p> description:{this.props.reduxStore.description}</p> 
+                    <p> Welcome to {this.props.reduxStore.user.username}'s Event!</p> 
+
+                    <p> poll:{this.props.reduxStore.poll[0].question}</p> 
+                    {/* <p> description:{this.props.reduxStore.description}</p> 
                     <p> event:{this.props.reduxStore.event}</p>  */}
             </div>
 

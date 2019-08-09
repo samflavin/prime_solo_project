@@ -17,10 +17,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {  
   const username = req.body.username;
+  const phoneNumber = req.body.phoneNumber;
+  const email = req.body.email;
+
   const password = encryptLib.encryptPassword(req.body.password);
 
-  const queryText = 'INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id';
-  pool.query(queryText, [username, password])
+  const queryText = 'INSERT INTO "user" ("username", "password", "phoneNumber", "email") VALUES ($1, $2, $3, $4) RETURNING id';
+  console.log(queryText, req.body)
+  pool.query(queryText, [username, password, phoneNumber, email])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 });
