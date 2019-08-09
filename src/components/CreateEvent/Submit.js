@@ -32,12 +32,13 @@ class Submit extends Component {
 
                 <h1>Review and Submit</h1>
                 
-                {JSON.stringify(this.props.reduxStore)}
+                {/* {JSON.stringify(this.props.reduxStore)} */}
             <div>
                     <p> Welcome to {this.props.reduxStore.user.username}'s Event, {this.props.reduxStore.description.event_name} !</p> 
 
                     <p> description:{this.props.reduxStore.description.description}</p> 
                     <ul> GuestList:
+                        <hr />
                     {this.props.reduxStore.invitees.map((item, i) =>
                        
                             <li key={i}>{item.username}</li>
@@ -45,6 +46,23 @@ class Submit extends Component {
                        
                     )}
                     </ul>
+                    <hr />
+                    <ul> Poll:
+                    {this.props.reduxStore.poll.map((item, i) =>
+
+                        <li key={i}>{item.question}</li>
+
+                    )}
+                    </ul>
+                     
+                <ul> 
+                    Options:{this.props.reduxStore.poll.map((item, i) =>
+
+                    <li>{item.options}</li>
+
+                )}
+                </ul>
+                <hr />
             </div>
 
                 &nbsp;
