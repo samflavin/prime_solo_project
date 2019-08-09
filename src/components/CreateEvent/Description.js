@@ -43,7 +43,7 @@ class Description extends Component {
       
         return (
             <div>
-{JSON.stringify(this.props.reduxStore)}
+{/*  {JSON.stringify(this.props.reduxStore)} */}
                 <h1>Description</h1>
                 <h4>Tell your guests about the event to which they're being invited!</h4>
 

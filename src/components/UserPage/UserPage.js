@@ -25,7 +25,7 @@ class UserPage extends Component {
     <h1 id="welcome">
       Welcome, { this.props.user.username }!
     </h1>
-    {JSON.stringify(this.props)}
+    {/* {JSON.stringify(this.props)} */}
 
     <p>Your ID is: {this.props.user.id}</p>
     <main className="App">
@@ -34,7 +34,9 @@ class UserPage extends Component {
     &nbsp;
     </main>
     &nbsp;
+    <footer>
     <LogOutButton className="log-in" />
+    </footer>
   </div>
   
     )

@@ -25,14 +25,24 @@ class Submit extends Component {
         // Then programmatically  nav back to home
         this.props.history.push('/addGuest');
     }
+
+
+    // parser = (options) => {
+    //     let newArray = [];
+    //     newArray.push(options);
+    //     console.log(' JSON parsing shit', JSON.parse(newArray))
+    //     return JSON.parse(newArray)
+    // }
+
+    
     render() {
         console.log(this.props.reduxStore.description)
         return (
             <div>
 
-                <h1>Review and Submit</h1>
+                <h1>Review and Send</h1>
                 
-                {/* {JSON.stringify(this.props.reduxStore)} */}
+                {JSON.stringify(this.props.reduxStore)}
             <div>
                     <p> Welcome to {this.props.reduxStore.user.username}'s Event, {this.props.reduxStore.description.event_name} !</p> 
 
@@ -49,18 +59,19 @@ class Submit extends Component {
                     <hr />
                     <ul> Poll:
                     {this.props.reduxStore.poll.map((item, i) =>
-
-                        <li key={i}>{item.question}</li>
-
+                        <>
+                        <li key={i}>Q:{item.question}</li>
+                        <li>{this.parser(item.options)}</li>
+                        </>
                     )}
                     </ul>
                      
                 <ul> 
-                    Options:{this.props.reduxStore.poll.map((item, i) =>
+                    {/* Options:{this.props.reduxStore.poll.map((item, i) =>
 
-                    <li>{item.options}</li>
+                 
 
-                )}
+                )} */}
                 </ul>
                 <hr />
             </div>
@@ -68,7 +79,9 @@ class Submit extends Component {
                 &nbsp;
             <button onClick={this.handleBack}>Back</button>
                 &nbsp;
-            <button onClick={this.handleClick}>CONFIRM</button>
+                 <button onClick={this.edit}>Edit</button>
+                &nbsp;
+            <button onClick={this.handleClick}>Send</button>
 
 
             </div>

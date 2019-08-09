@@ -21,7 +21,7 @@ function* poll(action) {
 function* updatePoll(action) {
     try {
         const response = yield Axios.get(`/api/poll/${action.payload}`);
-        console.log(response.data);
+        // console.log(JSON.parse(response.data));
         yield put({ type: 'SET_POLL', payload: response.data })
 
 

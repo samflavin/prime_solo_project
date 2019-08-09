@@ -42,7 +42,7 @@ class AddGuests extends Component {
 
     checkStatus = (user) => {
        
-        if (!this.props.reduxStore.invitees.find(invitee=> invitee.user_id === user.id)){
+        if (!this.props.reduxStore.invitees.find(invitee=> invitee.username === user.username)){
           return   <button onClick={(event) => this.inviteGuest(user)}>Invite</button>
         } else {
     
@@ -69,14 +69,11 @@ class AddGuests extends Component {
                 <h1>Add Guests</h1>
                 
            <ul>
-               
-            {JSON.stringify(this.props.reduxStore.invitees)}
-                    {JSON.stringify(this.props.reduxStore.poll)}
 
                 {this.props.reduxStore.guests.map((item, i) =>
-                    <li>{item.username}{this.checkStatus(item)}</li>
+                <li key={i}>{item.username}{this.checkStatus(item)}</li>
                 )}
-                </ul>
+         </ul>
                 
             {/* <button onClick={this.send}>Send</button> */}
                 <hr />
