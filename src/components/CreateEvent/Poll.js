@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import TextFields from '@material-ui/core/TextField';
 //import PollItem from './pollItem/PollItem';
 
 
@@ -79,22 +81,23 @@ class Poll extends Component {
                 <section>
 {JSON.stringify(this.props.reduxStore.event)}
                     <label><span className="required">Question:</span></label>
-                    <input type="text" value={this.state.newItem.question}
+                    <TextFields type="text" value={this.state.newItem.question}
                         onChange={(event) => this.handleChangeFor(event, 'question')} />
 
                             <h3>{this.state.newItem.question}</h3>
                        <br />
                         <label><span className="required">Options:</span></label>
-                    <input type="text" value={this.state.optionInput}
+                    <TextFields type="text" value={this.state.optionInput}
                         onChange={(event) => this.handleChangeForOptions(event, 'optionInput')} />
-                        <button onClick={this.addOption}>Add Option</button>
+                        &nbsp;
+                    <Button variant="contained" color="primary" onClick={this.addOption}>Add Option</Button>
                             <h2>{this.state.newItem.options.map( (item, i)  => 
                                     <p key={i}>{item}</p>
                                 )}</h2>
 
 
                         <br />
-                        <button type="submit" value="submit" onClick={()=> this.handleSubmit(this.props.reduxStore.event)}>Create Poll</button>
+                    <Button variant="contained" color="primary" type="submit" value="submit" onClick={()=> this.handleSubmit(this.props.reduxStore.event)}>Create Poll</Button>
                 </section>
                         <br />
                         {/* {JSON.stringify(this.props.reduxStore.poll.question)}
@@ -109,9 +112,9 @@ class Poll extends Component {
                     )} */}
                         </section>
                 <br />
-                <button onClick={this.handleBack}>Back</button>
+                <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
-            <button onClick={this.handleClick}>Next</button>
+            <Button variant="contained" color="primary" onClick={this.handleClick}>Next</Button>
 
                         
                 

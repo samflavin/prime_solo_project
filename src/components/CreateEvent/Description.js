@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import TextFields from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
+
+
 
 
 
@@ -46,28 +53,30 @@ class Description extends Component {
 {/*  {JSON.stringify(this.props.reduxStore)} */}
                 <h1>Description</h1>
                 <h4>Tell your guests about the event to which they're being invited!</h4>
-
+            <Card>
+                <CardContent>
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
 
                     <label><span className="required">Name of event:</span></label>
-                    <input type="text" value={this.state.newItem.event_name}
+                    <TextFields type="text" value={this.state.newItem.event_name}
                         onChange={(event) => this.handleChangeFor(event, 'event_name')} />
                 </section>
-
+                &nbsp;
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
 
                     <label><span className="required"></span></label>
                     <textarea type="text" value={this.state.newItem.description}
                         onChange={(event) => this.handleChangeFor(event, 'description')} />
                 </section>
+                </CardContent >
+                </Card>
 
-
-                &nbsp;
-            <button onClick={this.handleBack}>Back</button>
-              &nbsp;
-            <button onClick={(event) => this.handleClick(event, this.state.newItem)}>Next</button>
-            
-
+            &nbsp;
+            <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
+            &nbsp;
+            <Button variant="contained" color="primary" onClick={(event) => this.handleClick(event, this.state.newItem)}>Next</Button>
+             &nbsp;
+   
             </div>
         )
     }

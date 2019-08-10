@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import PeopleIcon from '@material-ui/icons/People';
+
 
 
 
@@ -68,7 +71,7 @@ class AddGuests extends Component {
         return (
             <div>
                 {JSON.stringify(this.props.reduxStore.poll)}
-                <h1>Add Guests</h1>
+                <h1>Add Guests  <PeopleIcon></PeopleIcon></h1>
                 
            <ul>
 
@@ -80,9 +83,9 @@ class AddGuests extends Component {
             {/* <button onClick={this.send}>Send</button> */}
                 <hr />
                 &nbsp;
-            <button onClick={this.handleBack}>Back</button>
+            <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
-            <button onClick={this.handleClick}>Next</button>
+            <Button variant="contained" color="primary" onClick={this.handleClick}>Next</Button>
 
             </div>
         )

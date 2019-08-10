@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -8,8 +9,6 @@ class Submit extends Component {
     handleClick = () => {
         // Do javascript fun stuff?
         alert('Congratulations Youve just created a new event!');
-
-        // Then programmatically  nav back to home
         this.props.history.push('/home');
     }
 
@@ -44,16 +43,15 @@ class Submit extends Component {
                 
                 {JSON.stringify(this.props.reduxStore)}
             <div>
-                    <p> Welcome to {this.props.reduxStore.user.username}'s Event, {this.props.reduxStore.description.event_name} !</p> 
+                    <p> Welcome to {this.props.reduxStore.user.username}'s Event: {this.props.reduxStore.description.event_name} !</p> 
 
                     <p> description:{this.props.reduxStore.description.description}</p> 
+                    <hr />
                     <ul> GuestList:
-                        <hr />
                     {this.props.reduxStore.invitees.map((item, i) =>
                        
                             <li key={i}>{item.username}</li>
                         
-                       
                     )}
                     </ul>
                     <hr />
@@ -77,11 +75,11 @@ class Submit extends Component {
             </div>
 
                 &nbsp;
-            <button onClick={this.handleBack}>Back</button>
+            <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
-                 <button onClick={this.edit}>Edit</button>
+                 <Button variant="contained" color="secondary" onClick={this.edit}>Edit</Button>
                 &nbsp;
-            <button onClick={this.handleClick}>Send</button>
+            <Button variant="contained" color="primary" onClick={this.handleClick}>Send</Button>
 
 
             </div>
