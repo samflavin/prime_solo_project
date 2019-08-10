@@ -8,8 +8,10 @@ function* poll(action) {
         console.log('in poll saga, action.payload is', action.payload)
 
         const response = yield Axios.post('/api/poll', action.payload);
-        console.log(response.data);
-        yield put({ type: 'GET_POLL', payload: action.payload.eventId})
+        console.log('BACK FROM POSTING IN POLL WITH', response);
+        yield put({ type: 'GET_POLL', payload: action.payload.eventId});
+        yield put({ type: 'FETCH_OPTIONS', payload: action.payload.eventId })
+
 
 
     } catch (error) {

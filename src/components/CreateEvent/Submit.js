@@ -61,7 +61,7 @@ class Submit extends Component {
                     {this.props.reduxStore.poll.map((item, i) =>
                         <>
                         <li key={i}>Q:{item.question}</li>
-                        <li>{this.parser(item.options)}</li>
+                        
                         </>
                     )}
                     </ul>

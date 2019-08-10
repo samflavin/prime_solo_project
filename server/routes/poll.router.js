@@ -20,9 +20,10 @@ router.post('/', async (req, res) => {
         VALUES ($1, $2, $3)
         RETURNING id;`, [question, options, eventId]);
         const questionId = orderInsertResults.rows[0].id;
+        
 
         await Promise.all(options.map(option=> {
-            const insertLineItemText = `INSERT INTO "option" ("option", "questionId") VALUES ($1, $2)`;
+            const insertLineItemText = `INSERT INTO "option" ("option", "poll_id") VALUES ($1, $2) RETURNING poll_id`;
             const insertLineItemValues = [option, questionId ];
             return client.query(insertLineItemText, insertLineItemValues);
         }));

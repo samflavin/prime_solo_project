@@ -63,9 +63,11 @@ class AddGuests extends Component {
 
 
     render() {
+
+        console.log(this.props.reduxStore.poll)
         return (
             <div>
-
+                {JSON.stringify(this.props.reduxStore.poll)}
                 <h1>Add Guests</h1>
                 
            <ul>
