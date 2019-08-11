@@ -13,7 +13,11 @@ import EventIcon from '@material-ui/icons/Event';
 class UserPage extends Component {
 
 
+  componentDidMount = () => {
+    this.props.dispatch({ type: 'FETCH_CURRENTEVENT', payload: this.props.user.id});
 
+
+  }
 
   handleClick = () => {
 
@@ -24,27 +28,7 @@ class UserPage extends Component {
 
     return(
       <>
-
-      <aside class="mdc-drawer">
-        <div class="mdc-drawer__content">
-          <nav class="mdc-list">
-            <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-              <span class="mdc-list-item__text">Inbox</span>
-            </a>
-            <a class="mdc-list-item" href="#">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-              <span class="mdc-list-item__text">Outgoing</span>
-            </a>
-            <a class="mdc-list-item" href="#">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-              <span class="mdc-list-item__text">Drafts</span>
-            </a>
-          </nav>
-        </div>
-      </aside>
-      <>
-  <div >
+    <div>
     <h2 id="welcome">
       Welcome, { this.props.user.username }!
     </h2>
@@ -62,7 +46,7 @@ class UserPage extends Component {
     </footer>
   </div>
   </>
-  </>
+
     )
   }
 };

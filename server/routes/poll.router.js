@@ -16,14 +16,14 @@ router.post('/', async (req, res) => {
             eventId
         } = req.body;
         await client.query('BEGIN')
-        const orderInsertResults = await client.query(`INSERT INTO "polls" ("question", "options", "eventId")
+        const orderInsertResults = await client.query(`INSERT INTO "polls" ("question", "options", "event_id")
         VALUES ($1, $2, $3)
         RETURNING id;`, [question, options, eventId]);
         const questionId = orderInsertResults.rows[0].id;
         
 
         await Promise.all(options.map(option=> {
-            const insertLineItemText = `INSERT INTO "option" ("option", "poll_id") VALUES ($1, $2) RETURNING poll_id`;
+            const insertLineItemText = `INSERT INTO "option" ("option", "poll_id") VALUES ($1, $2)`;
             const insertLineItemValues = [option, questionId ];
             return client.query(insertLineItemText, insertLineItemValues);
         }));
@@ -57,14 +57,14 @@ router.post('/', async (req, res) => {
 //GET route
 router.get('/:id', (req, res) => {
     console.log(req.params)
-    const sqlText = `select * from polls where "eventId" =$1;`;
+    const sqlText = `select * from polls where "event_id" =$1;`;
     pool.query(sqlText,[req.params.id])
         .then((response) => {
             console.log(`got event info`, response.rows, 'req.params.id', req.params.id)
             res.send(response.rows);
         })
         .catch((error) => {
-            console.log(`Error getting events from db`, error);
+            console.log(`Error getting polls from db`, error);
             res.sendStatus(500); // Good server always responds
         })
 

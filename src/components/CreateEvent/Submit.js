@@ -14,6 +14,8 @@ class Submit extends Component {
 
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_DESCRIPTION', payload:this.props.match.params.id});
+        this.props.dispatch({ type: 'FETCH_OPTIONS', payload: this.props.reduxStore.poll[0].id });
+
 
     }
 
@@ -41,7 +43,7 @@ class Submit extends Component {
 
                 <h1>Review and Send</h1>
                 
-                {JSON.stringify(this.props.reduxStore)}
+                {JSON.stringify(this.props.reduxStore.poll)}
             <div>
                     <p> Welcome to {this.props.reduxStore.user.username}'s Event: {this.props.reduxStore.description.event_name} !</p> 
 
@@ -65,11 +67,9 @@ class Submit extends Component {
                     </ul>
                      
                 <ul> 
-                    {/* Options:{this.props.reduxStore.poll.map((item, i) =>
-
-                 
-
-                )} */}
+                    Options:{this.props.reduxStore.options.map((item, i) =>
+                    <li key={i}>{i + 1}: {item.option}</li>
+                )}
                 </ul>
                 <hr />
             </div>

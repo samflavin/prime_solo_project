@@ -9,8 +9,6 @@ function* description(action) {
         console.log(response.data.id);
         yield put({ type: 'SET_EVENTID', payload: response.data.id });
 
-    
-
     } catch (error) {
         console.log('Error with getting users:', error);
         // yield put({ type: 'REGISTRATION_FAILED' });

@@ -7,7 +7,8 @@ import poll from './pollReducer';
 import guests from './fetchGuestsReducer';
 import invitees from './setInviteesReducer';
 import event from './eventReducer';
-import options from './optionsReducer'
+import options from './optionsReducer';
+import currentEvent from './currentEventReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   invitees,//holds invited guests in redux
   event, //holds event info from DB
   options, // holds options from DB
+  currentEvent, //holds current event
 });
 
 export default rootReducer;

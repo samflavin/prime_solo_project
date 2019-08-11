@@ -12,8 +12,9 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const guestRouter = require('./routes/guests.router');
 const eventsRouter = require('./routes/events.router');
-const pollRouter = require('./routes/poll.router')
-const optionsRouter = require('./routes/options.router')
+const pollRouter = require('./routes/poll.router');
+const optionsRouter = require('./routes/options.router');
+const currentRouter = require('./routes/current.router')
 
 
 
@@ -34,6 +35,9 @@ app.use('/api/guests', guestRouter);
 app.use('/api/events', eventsRouter);
 app.use('/api/poll', pollRouter);
 app.use('/api/options', optionsRouter);
+app.use('/api/current', currentRouter);
+
+
 
 
 // Serve static files

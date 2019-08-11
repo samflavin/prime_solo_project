@@ -31,7 +31,8 @@ class AddGuests extends Component {
     //sets state of invited guests
     inviteGuest = (item) => {
         console.log(`You're invitation has been sent`, item);
-        this.props.dispatch({ type: 'PREP_INVITEES', payload:{ eventId: this.props.reduxStore.poll[0].eventId, userId: item.id}});
+        console.log(this.props.reduxStore.poll)
+        this.props.dispatch({ type: 'PREP_INVITEES', payload:{ eventId: this.props.reduxStore.poll[0].event_id, userId: item.id}});
     }
     // item.id 
     uninviteGuest = (item) => {

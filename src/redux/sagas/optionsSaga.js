@@ -2,7 +2,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 import Axios from 'axios';
 
 function* fetchOptions(action) {
-    console.log('in fetchGuests')
+    console.log('in GET OPTIONS action.payload', action.payload)
     try {
         const response = yield Axios.get(`/api/options/${action.payload}`);
         yield put({ type: 'SET_OPTIONS', payload: response.data })

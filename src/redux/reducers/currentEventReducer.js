@@ -1,12 +1,12 @@
-const description = (state = [], action) => {
+const currentEvent = (state = [], action) => {
 
     switch (action.type) {
-        case 'SET_DESCRIPTION':
+        case 'SET_CURRENTEVENT':
             return action.payload;
         default:
             return state;
     }
-  
+
 };
 
-export default description;
+export default currentEvent;

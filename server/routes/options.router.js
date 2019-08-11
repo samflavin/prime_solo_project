@@ -25,8 +25,7 @@ router.get('/:id', (req, res) => {
     const sqlText = `select option, id from "option" where poll_id=$1`;
     pool.query(sqlText, [req.params.id])
         .then((response) => {
-            console.log(`GOT Options data`, response.data)
-            console.log(`GOT Options rows at 0`, response.rows[0])
+            console.log(`GOT Options rows`, response.rows)
 
             res.send(response.rows);
         })
