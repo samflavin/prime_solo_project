@@ -13,7 +13,7 @@ function* fetchOptions(action) {
        
     }
 }
-//Gets options by event Id
+//Gets options by event Idw
 function* getOptions(action) {
     console.log('in GET OPTIONS action.payload', action.payload)
     try {

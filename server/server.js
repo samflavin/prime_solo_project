@@ -14,7 +14,8 @@ const guestRouter = require('./routes/guests.router');
 const eventsRouter = require('./routes/events.router');
 const pollRouter = require('./routes/poll.router');
 const optionsRouter = require('./routes/options.router');
-const currentRouter = require('./routes/current.router')
+const currentRouter = require('./routes/current.router');
+const chatRouter = require('./routes/chat.router');
 
 
 
@@ -36,6 +37,9 @@ app.use('/api/events', eventsRouter);
 app.use('/api/poll', pollRouter);
 app.use('/api/options', optionsRouter);
 app.use('/api/current', currentRouter);
+app.use('/api/chat', chatRouter);
+
+
 
 
 

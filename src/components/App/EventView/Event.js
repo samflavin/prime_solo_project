@@ -51,33 +51,36 @@ class Event extends Component {
               <div className="description">
                   <h4>Description:</h4>
                   <p>{this.props.reduxStore.description.description}</p>
-              </div>
+                </div>
                 <div className="guestList">
                   <h4>Guest List:</h4>
                     {this.props.reduxStore.invitees.map((item, i) =>
                         <li key={i}>{item.username}</li>
                     )}
-              </div>
-                <div className="poll">
+                     </div>
+                    <div className="poll">
                     <h4>Poll Question:</h4>
                     {this.props.reduxStore.poll.map((item, i) =>
                         <>
                             <p key={i}>{item.question}</p>
                         </>
                     )}
-            </div>
-                <div className="options">
-                    <h4>Poll Options:</h4>
-                    <ol>
+                    </div>
+                    <div className="options">
+                    <h6>Poll Options:</h6>
+                    
                    {this.props.reduxStore.options.map((item, i) =>
-                        <li key={i}>{item.option} </li>
+                        <>
+                       <p key={i}>{i +1}.  {item.option}   <Button variant="contained" color="primary">Vote</Button> </p>
+                      <p></p>
+                      </>
                     )}
-                    </ol>
-            </div>
-            &nbsp;
-            <div>
-                <ChatBar username={this.props.reduxStore.user.username} />
-            </div>
+                  
+                    </div>
+                    &nbsp;
+                    <div>
+                    <ChatBar username={this.props.reduxStore.user.username} event_id={this.props.match.params.id} user_id={this.props.reduxStore.user.id} />
+                    </div>
 
             
 
