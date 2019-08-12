@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
 //Gets Event names for user
 router.get('/list/:id', (req, res) => {
     console.log(req.params)
-    const sqlText = `select (event_name) from event where user_id =$1`;
+    const sqlText = `select (event_name), id from event where user_id =$1`;
     pool.query(sqlText, [req.params.id])
         .then((response) => {
             console.log(`GOT Event List for user`, response.rows)

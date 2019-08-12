@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 import PeopleIcon from '@material-ui/icons/People';
+
 
 
 
@@ -39,7 +41,7 @@ class EventView extends Component {
 
     view = (event) => {
         console.log('youve clicked this event', event)
-        // this.props.history.push('/event/:id');
+        this.props.history.push(`/event/num/${event.id}`);
     }
 
 
@@ -63,12 +65,12 @@ class EventView extends Component {
 
         return (
             <div>
-                <h1><PeopleIcon></PeopleIcon>  Events Page  <PeopleIcon></PeopleIcon></h1>
+                <h1><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon></h1>
             {JSON.stringify(this.props.reduxStore.currentEvent)}
             <h2>Current Events:</h2>
                 <ul>
                     {this.props.reduxStore.currentEvent.map((item, i) =>
-                        <li key={i}>{item.event_name} <button onClick={() =>this.view(item)}>View</button> </li>
+                        <Link to={`/view/${item.id}`}> <li key={i}>{item.event_name}</li></Link>
                     )}
                 </ul>
 

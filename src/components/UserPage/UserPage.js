@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import Button from '@material-ui/core/Button';
 import EventIcon from '@material-ui/icons/Event';
-import {
-  Link 
-} from 'react-router-dom';
+import {Link } from 'react-router-dom';
+import PeopleIcon from '@material-ui/icons/People';
+
 
 
 // this could also be written with destructuring parameters as:
@@ -34,7 +34,7 @@ class UserPage extends Component {
       <>
     <div>
     <h2 id="welcome">
-      Welcome, { this.props.user.username }!
+            <PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon>  Welcome, {this.props.user.username}!  <PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon>
     </h2>
     {JSON.stringify(this.props.state)}
 

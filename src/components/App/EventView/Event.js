@@ -9,15 +9,15 @@ import PeopleIcon from '@material-ui/icons/People';
 class Event extends Component {
 
 
-    // componentDidMount() {
-    //     console.log('user id', this.props.reduxStore.user.id)
-    //     this.props.dispatch({ type: 'FETCH_EVENTLIST', payload: this.props.reduxStore.user.id });
+    componentDidMount() {
+        console.log('user id', this.props.reduxStore.user.id)
+        this.props.dispatch({ type: 'FETCH_EVENTLIST', payload: this.props.reduxStore.user.id });
 
     }
 
-    // handleClick = () => {
-    //     this.props.history.push(`/event/${this.props.reduxStore.event}`);
-    // }
+    handleClick = () => {
+        this.props.history.push(`/event/${this.props.reduxStore.event}`);
+    }
 
     handleBack = () => {
 
@@ -37,6 +37,24 @@ class Event extends Component {
         this.props.dispatch({ type: 'ALTER_INVITEES', payload: { eventId: this.props.reduxStore.event, userId: item.id } });
     }
 
+    view = (event) => {
+        console.log('youve clicked this event', event)
+        this.props.history.push(`/event/${event.id}`);
+    }
+
+
+
+
+
+    // checkStatus = (user) => {
+
+    //     if (!this.props.reduxStore.invitees.find(invitee => invitee.username === user.username)) {
+    //         return <button onClick={(event) => this.inviteGuest(user)}>Invite</button>
+    //     } else {
+
+    //         return <button onClick={(event) => this.uninviteGuest(user)}>Uninvite</button>
+    //     }
+    // }
 
 
 
@@ -45,10 +63,10 @@ class Event extends Component {
 
         return (
             <div>
-                <h1><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon></h1>
-                {JSON.stringify(this.props.reduxStore)}
-                <h2>HELLO</h2>
-           
+                <h1><PeopleIcon></PeopleIcon>  Events Page  <PeopleIcon></PeopleIcon></h1>
+                {JSON.stringify(this.props.reduxStore.currentEvent)}
+                <h2>Specific Event:</h2>
+            
 
                 <hr />
                 &nbsp;
