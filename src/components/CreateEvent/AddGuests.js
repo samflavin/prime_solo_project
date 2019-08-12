@@ -72,7 +72,7 @@ class AddGuests extends Component {
         return (
             <div>
                 {JSON.stringify(this.props.reduxStore.poll)}
-                <h1>Add Guests  <PeopleIcon></PeopleIcon></h1>
+                <h1><PeopleIcon></PeopleIcon> Add Guests  <PeopleIcon></PeopleIcon></h1>
                 
            <ul>
 

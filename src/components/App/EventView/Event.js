@@ -11,8 +11,10 @@ class Event extends Component {
 
     componentDidMount() {
         console.log('user id', this.props.reduxStore.user.id)
-        this.props.dispatch({ type: 'FETCH_EVENTLIST', payload: this.props.reduxStore.user.id });
-
+        this.props.dispatch({ type: 'GET_DESCRIPTION', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'GET_INVITEES', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'GET_POLL', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'GET_OPTIONS', payload: this.props.match.params.id });
     }
 
     handleClick = () => {
@@ -24,26 +26,6 @@ class Event extends Component {
         // Then programmatically  nav back to poll
         this.props.history.push('/event');
     }
-
-    //sets state of invited guests
-    inviteGuest = (item) => {
-        console.log(`You're invitation has been sent`, item);
-        console.log(this.props.reduxStore.poll)
-        this.props.dispatch({ type: 'PREP_INVITEES', payload: { eventId: this.props.reduxStore.poll[0].event_id, userId: item.id } });
-    }
-    // item.id 
-    uninviteGuest = (item) => {
-        console.log(`You're invitation has been revoked`);
-        this.props.dispatch({ type: 'ALTER_INVITEES', payload: { eventId: this.props.reduxStore.event, userId: item.id } });
-    }
-
-    view = (event) => {
-        console.log('youve clicked this event', event)
-        this.props.history.push(`/event/${event.id}`);
-    }
-
-
-
 
 
     // checkStatus = (user) => {
@@ -63,14 +45,40 @@ class Event extends Component {
 
         return (
             <div>
-                <h1><PeopleIcon></PeopleIcon>  Events Page  <PeopleIcon></PeopleIcon></h1>
-                {JSON.stringify(this.props.reduxStore.currentEvent)}
-                <h2>Specific Event:</h2>
+                <h1><PeopleIcon></PeopleIcon>{this.props.reduxStore.description.event_name}<PeopleIcon></PeopleIcon></h1>
+                {JSON.stringify(this.props.reduxStore)}
+              <div className="description">
+                  <h4>Description:</h4>
+                  <p>{this.props.reduxStore.description.description}</p>
+              </div>
+                <div className="guestList">
+                  <h4>Guest List:</h4>
+                    {this.props.reduxStore.invitees.map((item, i) =>
+                        <li key={i}>{item.username}</li>
+                    )}
+              </div>
+                <div className="poll">
+                    <h4>Poll Question:</h4>
+                    {this.props.reduxStore.poll.map((item, i) =>
+                        <>
+                            <p key={i}>{item.question}</p>
+                        </>
+                    )}
+            </div>
+                <div className="options">
+                    <h4>Poll Options:</h4>
+                   {this.props.reduxStore.options.map((item, i) =>
+                        <li key={i}>{i + 1}: {item.option}</li>
+                    )}
+            </div>
             
 
-                <hr />
-                &nbsp;
+
+
+
+            <footer>
             <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
+            </footer>
                 &nbsp;
 
             </div>

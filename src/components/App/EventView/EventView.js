@@ -47,20 +47,6 @@ class EventView extends Component {
 
 
 
-
-    // checkStatus = (user) => {
-
-    //     if (!this.props.reduxStore.invitees.find(invitee => invitee.username === user.username)) {
-    //         return <button onClick={(event) => this.inviteGuest(user)}>Invite</button>
-    //     } else {
-
-    //         return <button onClick={(event) => this.uninviteGuest(user)}>Uninvite</button>
-    //     }
-    // }
- 
-
-
-
     render() {
 
         return (

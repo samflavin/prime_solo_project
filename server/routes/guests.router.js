@@ -61,7 +61,7 @@ router.get('/invitees', (req, res) => {
             res.send(response.rows)
         })
         .catch((error) => {
-            console.log(`error UPDATIND GUESTLIST`, error);
+            console.log(`error UPDATING GUESTLIST`, error);
             res.sendStatus(500)
         })
 });
