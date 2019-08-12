@@ -21,6 +21,7 @@ import Description from '../CreateEvent/Description';
 import Poll from '../CreateEvent/Poll';
 import AddGuests from '../CreateEvent/AddGuests';
 import Submit from '../CreateEvent/Submit';
+import EventView from './EventView/EventView'
 
 
 import './App.css';
@@ -67,6 +68,9 @@ class App extends Component {
             <Route Poll path="/poll" component={Poll} />
             <Route AddGuests path="/addGuest/:id" component={AddGuests} />
             <Route Submit path="/submit/:id" component={Submit} />
+            <Route Event path="/event" component={EventView} />
+            <Route Event path="/event/:id" component={Event} />
+
 
 
           

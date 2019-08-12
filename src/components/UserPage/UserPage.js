@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import Button from '@material-ui/core/Button';
 import EventIcon from '@material-ui/icons/Event';
+import {
+  Link 
+} from 'react-router-dom';
 
 
 // this could also be written with destructuring parameters as:
@@ -19,11 +22,6 @@ class UserPage extends Component {
 
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.user.id !== prevProps.user.id) {
-  //     this.fetchData(this.props.userID);
-  //   }
-  // }
 
   handleClick = () => {
 
@@ -41,7 +39,10 @@ class UserPage extends Component {
     {JSON.stringify(this.props.state)}
 
     <p>Your ID is: {this.props.user.id}</p>
-    <p>You currently have {this.props.state.currentEvent.length>0 && this.props.state.currentEvent[0].count} active events!</p>
+     &nbsp;
+          <Link to={'/event'}>You currently have {this.props.state.currentEvent.length > 0 && this.props.state.currentEvent[0].count} active events!</Link>
+           &nbsp;
+           <p></p>
     <main className="App">
     
     &nbsp;
