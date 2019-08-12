@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import PeopleIcon from '@material-ui/icons/People';
+import ChatBar from'../ChatBar/ChatBar'
 
 
 
@@ -67,13 +68,18 @@ class Event extends Component {
             </div>
                 <div className="options">
                     <h4>Poll Options:</h4>
+                    <ol>
                    {this.props.reduxStore.options.map((item, i) =>
-                        <li key={i}>{i + 1}: {item.option}</li>
+                        <li key={i}>{item.option} </li>
                     )}
+                    </ol>
             </div>
+            &nbsp;
+            <div>
+                <ChatBar username={this.props.reduxStore.user.username} />
+            </div>
+
             
-
-
 
 
             <footer>
