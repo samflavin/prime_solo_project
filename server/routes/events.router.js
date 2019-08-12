@@ -25,7 +25,7 @@ router.get('/description/:id', (req, res) => {
 //Post event and return id
 router.post('/', (req, res) => {
     console.log(req.body)
-    const sqlText = `INSERT INTO event ("userId", "event_name", "description") 
+    const sqlText = `INSERT INTO event ("user_id", "event_name", "description") 
       VALUES ($1, $2, $3) RETURNING id`;
     pool.query(sqlText, [req.body.userId, req.body.event_name, req.body.description])
         .then((response) => {
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     console.log(req.params)
-    const sqlText = `select event.id from event where "userId"=$1`;
+    const sqlText = `select event.id from event where "user_id"=$1`;
     pool.query(sqlText, [req.params.id])
         .then((response) => {
             console.log(`got event info`, response.rows)

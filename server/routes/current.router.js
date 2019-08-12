@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     console.log(req.params)
-    const sqlText = `select option, id from "option" where poll_id=$1`;
+    const sqlText = `select count (event_name) from event where user_id =$1`;
     pool.query(sqlText, [req.params.id])
         .then((response) => {
             console.log(`GOT Current Events for user`, response.rows)

@@ -2,9 +2,8 @@ import { put, takeEvery } from 'redux-saga/effects';
 import Axios from 'axios';
 
 function* fetchCurrentEvent(action) {
-    console.log('in fetchCurrentEvent')
     try {
-        const response = yield Axios.get('/api/current/${action.payload}');
+        const response = yield Axios.get(`/api/current/${action.payload}`);
         yield put({ type: 'SET_CURRENTEVENT', payload: response.data })
         console.log(response.data)
 

@@ -14,10 +14,16 @@ class UserPage extends Component {
 
 
   componentDidMount = () => {
+    console.log('user id ', this.props.user.id)
     this.props.dispatch({ type: 'FETCH_CURRENTEVENT', payload: this.props.user.id});
 
-
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.user.id !== prevProps.user.id) {
+  //     this.fetchData(this.props.userID);
+  //   }
+  // }
 
   handleClick = () => {
 
@@ -32,10 +38,12 @@ class UserPage extends Component {
     <h2 id="welcome">
       Welcome, { this.props.user.username }!
     </h2>
-    {JSON.stringify(this.props.reduxStore)}
+    {JSON.stringify(this.props.state)}
 
     <p>Your ID is: {this.props.user.id}</p>
+    <p>You currently have {this.props.state.currentEvent.length>0 && this.props.state.currentEvent[0].count} active events!</p>
     <main className="App">
+    
     &nbsp;
     <Button variant="contained" color="primary" onClick={this.handleClick}>Create an Event!<EventIcon></EventIcon></Button>
     &nbsp;
@@ -54,9 +62,9 @@ class UserPage extends Component {
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
-const mapStateToProps = (state,reduxStore) => ({
+const mapStateToProps = (state) => ({
   user: state.user,
-  reduxStore
+  state
 });
 
 // this allows us to use <App /> in index.js
