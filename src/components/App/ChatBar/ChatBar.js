@@ -40,9 +40,9 @@ class ChatBar extends Component {
                         <div className="messages">
                         <h4>Chat:</h4>
                         {this.props.reduxStore.messages.map((item, i) =>
-                            <>
+                        
                             <p key={i}>{item.username}: {item.messages}</p>
-                            </>
+                            
                         )}
                     </div>
                 </section>

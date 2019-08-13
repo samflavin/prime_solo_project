@@ -65,7 +65,7 @@ class EventView extends Component {
                 <h5>My Invitations</h5>
                 <ul>
                     {this.props.reduxStore.invitations.map((item, i) =>
-                        <Link to={`/view/${item.id}`}> <li key={i}>{item.event_name}</li></Link>
+                        <Link to={`/view/${item.event_id}`}> <li key={i}>{item.event_name}</li></Link>
                     )}
                 </ul>
 
