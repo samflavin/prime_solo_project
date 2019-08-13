@@ -26,8 +26,14 @@ class ChatBar extends Component {
     }
 
     send = () => {
-        this.props.dispatch({ type: 'PREP_MSG', payload: this.state.newItem })
-       
+        this.props.dispatch({ type: 'PREP_MSG', payload: this.state.newItem });
+        this.setState({
+            newItem: {
+                msg: '',
+                user_id: this.props.user_id,
+                event_id: this.props.event_id,
+            } 
+        })
     }
 
     render() {
