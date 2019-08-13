@@ -1,6 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import Axios from 'axios';
 
+//gets all events that user has created
 function* fetchCurrentEvent(action) {
     try {
         const response = yield Axios.get(`/api/current/${action.payload}`);
@@ -9,7 +10,18 @@ function* fetchCurrentEvent(action) {
 
     } catch (error) {
         console.log('Error with fetchCurrrnetEvent:', error);
-        // yield put({ type: 'REGISTRATION_FAILED' });
+    }
+}
+//gets all invitations 
+function* fetchInvitations(action) {
+    try {
+        const response = yield Axios.get(`/api/current/invitations/${action.payload}`);
+        console.log('back from fetch invitations with',response.data)
+        yield put({ type: 'SET_INVITATIONS', payload: response.data })
+        console.log(response.data)
+
+    } catch (error) {
+        console.log('Error with fetchCurrrnetEvent:', error);
     }
 }
 
@@ -22,13 +34,13 @@ function* fetchEventList(action) {
 
     } catch (error) {
         console.log('Error with fetchCurrrnetEvent:', error);
-        // yield put({ type: 'REGISTRATION_FAILED' });
     }
 }
 
 function* currentEventSaga() {
     yield takeEvery('FETCH_CURRENTEVENT', fetchCurrentEvent);
     yield takeEvery('FETCH_EVENTLIST', fetchEventList);
+    yield takeEvery('FETCH_INVITATIONS', fetchInvitations);
 
 }
 

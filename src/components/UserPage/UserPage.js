@@ -19,6 +19,8 @@ class UserPage extends Component {
   componentDidMount = () => {
     console.log('user id ', this.props.user.id)
     this.props.dispatch({ type: 'FETCH_CURRENTEVENT', payload: this.props.user.id});
+    this.props.dispatch({ type: 'FETCH_INVITATIONS', payload: this.props.user.id });
+
 
   }
 
@@ -41,6 +43,9 @@ class UserPage extends Component {
     <p>Your ID is: {this.props.user.id}</p>
      &nbsp;
           <Link to={'/event'}>You currently have {this.props.state.currentEvent.length > 0 && this.props.state.currentEvent[0].count} active events!</Link>
+          <p></p>
+          <Link to={'/event'}>You currently have {this.props.state.invitations.length > 0 && this.props.state.invitations[0].count} active invitations!</Link>
+
            &nbsp;
            <p></p>
     <main className="App">
