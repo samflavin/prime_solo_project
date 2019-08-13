@@ -29,17 +29,7 @@ class EventView extends Component {
         this.props.history.push('/home');
     }
 
-    //sets state of invited guests
-    inviteGuest = (item) => {
-        console.log(`You're invitation has been sent`, item);
-        console.log(this.props.reduxStore.poll)
-        this.props.dispatch({ type: 'PREP_INVITEES', payload: { eventId: this.props.reduxStore.poll[0].event_id, userId: item.id } });
-    }
-    // item.id 
-    uninviteGuest = (item) => {
-        console.log(`You're invitation has been revoked`);
-        this.props.dispatch({ type: 'ALTER_INVITEES', payload: { eventId: this.props.reduxStore.event, userId: item.id } });
-    }
+ 
 
     view = (event) => {
         console.log('youve clicked this event', event)
