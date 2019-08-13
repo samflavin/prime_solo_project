@@ -70,7 +70,7 @@ class Event extends Component {
                         </>
                     )}
                 </div>
-                <ChartPoll />
+                <ChartPoll event_id={this.props.match.params.id} />
                  
                 &nbsp;
                 <div>

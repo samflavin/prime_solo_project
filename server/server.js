@@ -38,6 +38,7 @@ app.use('/api/poll', pollRouter);
 app.use('/api/options', optionsRouter);
 app.use('/api/current', currentRouter);
 app.use('/api/chat', chatRouter);
+app.use('/api/vote', voteRouter);
 
 
 

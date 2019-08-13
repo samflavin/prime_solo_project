@@ -11,7 +11,7 @@ const data = {
         'Yellow'
     ],
     datasets: [{
-        data: [300, 50, 100],
+        data: [1, 2, 3],
         backgroundColor: [
             '#FF6384',
             '#36A2EB',
@@ -26,10 +26,17 @@ const data = {
 };
 
 class ChartPoll extends Component {
+    vote = (vote) => {
+        console.log('youve clicked vote which now contains', vote);
+        this.props.dispatch({ type: 'PREP_VOTE', payload: { vote_id: vote.id, event_id: this.props.event_id, user_id: this.props.reduxStore.user.id } });
+
+    }
+
 
 
     render() {
-   
+
+
         return (
             <>
             <div>
@@ -43,8 +50,8 @@ class ChartPoll extends Component {
 
                 {this.props.reduxStore.options.map((item, i) =>
                     <>
-                        <p key={i}>{i + 1}.  {item.option}   <Button variant="contained" color="primary">Vote</Button> </p>
-                        <p></p>
+                        <p key={i}>{i + 1}.  {item.option}   <Button variant="contained" color="primary" onClick={() => this.vote(item)}>Vote</Button> </p>
+                        
                     </>
                 )}
 
