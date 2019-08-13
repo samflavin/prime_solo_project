@@ -37,9 +37,14 @@ class ChatBar extends Component {
             <div className="chatBar">
              <h4>Sup Chatbar</h4>
                 <section>
-                    --This is where the messages will go--
-                    {/* {this.props.reduxStore.messages} */}
-
+                        <div className="messages">
+                        <h4>Chat:</h4>
+                        {this.props.reduxStore.messages.map((item, i) =>
+                            <>
+                            <p key={i}>{item.username}: {item.messages}</p>
+                            </>
+                        )}
+                    </div>
                 </section>
                 <section>
                     <TextFields placeholder="Type something..." type="text" value={this.state.newItem.msg}

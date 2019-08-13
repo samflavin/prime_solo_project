@@ -8,7 +8,8 @@ import guests from './fetchGuestsReducer';
 import invitees from './setInviteesReducer';
 import event from './eventReducer';
 import options from './optionsReducer';
-import currentEvent from './currentEventReducer'
+import currentEvent from './currentEventReducer';
+import messages from './messageReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   event, //holds event info from DB
   options, // holds options from DB
   currentEvent, //holds current event
+  messages, //holds chat messages
 });
 
 export default rootReducer;
