@@ -14,6 +14,8 @@ class EventView extends Component {
     componentDidMount() { 
         console.log('user id', this.props.reduxStore.user.id)
     this.props.dispatch({ type: 'FETCH_EVENTLIST', payload: this.props.reduxStore.user.id });
+    this.props.dispatch({ type: 'FETCH_INVITATIONLIST', payload: this.props.reduxStore.user.id });
+
 
     }
 
@@ -54,8 +56,15 @@ class EventView extends Component {
                 <h1><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon></h1>
             {JSON.stringify(this.props.reduxStore.currentEvent)}
             <h2>Current Events:</h2>
+                <h5>My Events</h5>
                 <ul>
                     {this.props.reduxStore.currentEvent.map((item, i) =>
+                        <Link to={`/view/${item.id}`}> <li key={i}>{item.event_name}</li></Link>
+                    )}
+                </ul>
+                <h5>My Invitations</h5>
+                <ul>
+                    {this.props.reduxStore.invitations.map((item, i) =>
                         <Link to={`/view/${item.id}`}> <li key={i}>{item.event_name}</li></Link>
                     )}
                 </ul>

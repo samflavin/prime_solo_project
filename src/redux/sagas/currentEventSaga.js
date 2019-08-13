@@ -25,6 +25,7 @@ function* fetchInvitations(action) {
     }
 }
 
+//gets name and id of event
 function* fetchEventList(action) {
     try {
         console.log(' in fetch event list , action.payload', action.payload)
@@ -37,10 +38,26 @@ function* fetchEventList(action) {
     }
 }
 
+//gets name and id of invited event
+function* fetchInvitationList(action) {
+    try {
+        console.log(' in fetch invited event list , action.payload', action.payload)
+        const response = yield Axios.get(`/api/current/invitations/list/${action.payload}`);
+        console.log('back from fetch invitatio list, response.data',response.data)
+        yield put({ type: 'SET_INVITATIONLIST', payload: response.data })
+        console.log(response.data)
+
+    } catch (error) {
+        console.log('Error with fetchCurrrnetEvent:', error);
+    }
+}
+
 function* currentEventSaga() {
     yield takeEvery('FETCH_CURRENTEVENT', fetchCurrentEvent);
     yield takeEvery('FETCH_EVENTLIST', fetchEventList);
     yield takeEvery('FETCH_INVITATIONS', fetchInvitations);
+    yield takeEvery('FETCH_INVITATIONLIST', fetchInvitationList);
+
 
 }
 
