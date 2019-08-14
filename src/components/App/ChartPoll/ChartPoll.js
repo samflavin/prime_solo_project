@@ -7,11 +7,13 @@ import { Doughnut } from 'react-chartjs-2';
 
 
 class ChartPoll extends Component {
+
+
     //dispatch vote info to db
     vote = (voteNumber) => {
         console.log(voteNumber)
         if (voteNumber === 1){
-            this.setState({one: ++this.state.count.one})
+            this.props.dispatch({ type: 'ADD_ONE', payload: {vote: 1, event_id: this.props.match.params.id}})
         } else if (voteNumber === 2){
             this.setState({ two: ++this.state.count.two })
         } else if (voteNumber === 3) {
@@ -33,11 +35,17 @@ state = {
     }
 
 }
+
+
+
   
     render() {
+
+        const labels = []; 
+
         const data = {
             //labels get data from state
-            labels: this.state.labels,
+            labels: labels,
             datasets: [{
                 data: [this.state.count.one, this.state.count.two, this.state.count.three, this.state.count.four],
                 backgroundColor: [
@@ -53,7 +61,8 @@ state = {
                 ]
             }]
         }
-
+    
+        
 
         return (
            
@@ -68,7 +77,7 @@ state = {
                 <h6>Poll Options:</h6>
                 {this.props.reduxStore.options.map((item, i) =>
                     <>
-                        <p key={i}>{i + 1}.  {item.option}{this.state.labels.push(item.option)}   <Button variant="contained" color="primary" onClick={() => this.vote(i+1)}>Vote</Button> </p>
+                        <p key={i}>{i + 1}.  {item.option}{labels.push(item.option)}   <Button variant="contained" color="primary" onClick={() => this.vote(i+1)}>Vote</Button> </p>
                         
                     </>
                 )}
@@ -76,7 +85,7 @@ state = {
                         
             </div>
             <div>
-                        {JSON.stringify(this.props.reduxStore.options)}
+                        {/* {JSON.stringify(this.getLabel(this.props.reduxStore.options[0]))} */}
             </div>
             
             </section>
