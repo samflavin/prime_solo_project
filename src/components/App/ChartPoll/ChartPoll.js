@@ -7,13 +7,17 @@ import { Doughnut } from 'react-chartjs-2';
 
 
 class ChartPoll extends Component {
+componentDidMount(){
+    this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id })
 
+}
 
     //dispatch vote info to db
     vote = (voteNumber) => {
         console.log(voteNumber)
         if (voteNumber === 1){
-            this.props.dispatch({ type: 'ADD_ONE', payload: {vote: 1, event_id: this.props.match.params.id}})
+            this.props.dispatch({ type: 'ADD_ONE', payload: { vote_id: 1, event_id: this.props.event_id }})
+            this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id  })
         } else if (voteNumber === 2){
             this.setState({ two: ++this.state.count.two })
         } else if (voteNumber === 3) {
@@ -28,8 +32,8 @@ class ChartPoll extends Component {
 state = {
     labels: [],
     count: {
-        one: 0,
-        two: 0,
+        one: Number(this.props.voteOne),
+        two: 1,
         three: 0,
         four: 0,
     }
@@ -47,7 +51,7 @@ state = {
             //labels get data from state
             labels: labels,
             datasets: [{
-                data: [this.state.count.one, this.state.count.two, this.state.count.three, this.state.count.four],
+                data: [Number(this.props.voteOne), this.state.count.two, this.state.count.three, this.state.count.four],
                 backgroundColor: [
                     '#FF6384',
                     '#36A2EB',
@@ -85,7 +89,7 @@ state = {
                         
             </div>
             <div>
-                        {/* {JSON.stringify(this.getLabel(this.props.reduxStore.options[0]))} */}
+                {(JSON.stringify(Number(this.props.voteOne)))}
             </div>
             
             </section>

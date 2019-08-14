@@ -20,6 +20,8 @@ class Event extends Component {
         this.props.dispatch({ type: 'GET_OPTIONS', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_MSG', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_VOTE', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id })
+
 
     }
 
@@ -28,23 +30,8 @@ class Event extends Component {
     }
 
     handleBack = () => {
-
-        // Then programmatically  nav back to poll
         this.props.history.push('/event');
     }
-
-
-    // checkStatus = (user) => {
-
-    //     if (!this.props.reduxStore.invitees.find(invitee => invitee.username === user.username)) {
-    //         return <button onClick={(event) => this.inviteGuest(user)}>Invite</button>
-    //     } else {
-
-    //         return <button onClick={(event) => this.uninviteGuest(user)}>Uninvite</button>
-    //     }
-    // }
-
-
 
 
     render() {
@@ -71,7 +58,7 @@ class Event extends Component {
                         </>
                     )}
                 </div>
-                <ChartPoll event_id={this.props.match.params.id} />
+                <ChartPoll event_id={this.props.match.params.id} voteOne={this.props.reduxStore.votes} />
                  
                 &nbsp;
                 <div>
