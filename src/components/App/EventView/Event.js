@@ -19,6 +19,7 @@ class Event extends Component {
         this.props.dispatch({ type: 'GET_POLL', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_OPTIONS', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_MSG', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'GET_VOTE', payload: this.props.match.params.id });
 
     }
 

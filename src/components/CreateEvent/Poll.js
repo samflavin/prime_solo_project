@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import TextFields from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField';
 //import PollItem from './pollItem/PollItem';
 
 
@@ -15,7 +15,10 @@ class Poll extends Component {
             // eventId: this.props.reduxStore.event
         
         },
-        optionInput: ''
+        optionInput1: '',
+        optionInput2: '',
+        optionInput3: '',
+        optionInput4: ''
     }
 
     handleChangeFor = (event, property) => {
@@ -36,17 +39,29 @@ class Poll extends Component {
     }
 
     addOption = () => {
-        this.state.newItem.options.push(this.state.optionInput);
+        this.state.newItem.options.push(this.state.optionInput1);
         this.setState({
-            optionInput: ''
-        })
+            optionInput1: ''
+        });
+        this.state.newItem.options.push(this.state.optionInput2);
+        this.setState({
+            optionInput2: ''
+        });
+        this.state.newItem.options.push(this.state.optionInput3);
+        this.setState({
+            optionInput3: ''
+        });
+        this.state.newItem.options.push(this.state.optionInput4);
+        this.setState({
+            optionInput4: ''
+        });
     }
 
 
-    handleClick = () => {
-        // this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
-        this.props.history.push(`/addGuest/${this.props.reduxStore.event}`);
-    }
+    // handleClick = () => {
+    //     // this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
+    //     this.props.history.push(`/addGuest/${this.props.reduxStore.event}`);
+    // }
 
     handleBack = () => {
       
@@ -64,10 +79,16 @@ class Poll extends Component {
             options: [],
            
             },
-            optionInput: ''
+            optionInput1: '',
+            optionInput2: '',
+            optionInput3: '',
+            optionInput4: ''
         });
+        //Nav to next
+        this.props.history.push(`/addGuest/${this.props.reduxStore.event}`);
 
     }
+
 
     
 
@@ -76,21 +97,37 @@ class Poll extends Component {
         return (
 
             <>
-                <h2>Create a Poll Quest for your Guests</h2>
-                <h5>Create options for them to vote on too!</h5>
+                <h2>Create a Poll Question for your Guests</h2>
                 <section>
 {JSON.stringify(this.props.reduxStore.event)}
                     <label><span className="required">Question:</span></label>
-                    <TextFields type="text" value={this.state.newItem.question}
+                    <TextField type="text" value={this.state.newItem.question}
                         onChange={(event) => this.handleChangeFor(event, 'question')} />
+                    <h5>Create options for them to vote on too!</h5>
 
                             <h3>{this.state.newItem.question}</h3>
                        <br />
-                        <label><span className="required">Options:</span></label>
-                    <TextFields type="text" value={this.state.optionInput}
-                        onChange={(event) => this.handleChangeForOptions(event, 'optionInput')} />
+
+                    <label>1.</label>
+                    <TextField type="text" value={this.state.optionInput1}
+                        onChange={(event) => this.handleChangeForOptions(event, 'optionInput1')} />
                         &nbsp;
-                    <Button variant="contained" color="primary" onClick={this.addOption}>Add Option</Button>
+
+                        <label>2.</label>
+                          <TextField type="text" value={this.state.optionInput2}
+                        onChange={(event) => this.handleChangeForOptions(event, 'optionInput2')} />
+                        &nbsp;
+
+                         <label>3.</label>
+                          <TextField type="text" value={this.state.optionInput3}
+                        onChange={(event) => this.handleChangeForOptions(event, 'optionInput3')} />
+                        &nbsp;
+
+                        <label>4.</label>
+                          <TextField type="text" value={this.state.optionInput4}
+                        onChange={(event) => this.handleChangeForOptions(event, 'optionInput4')} />
+                        &nbsp;
+                    <Button variant="contained" color="primary" onClick={this.addOption}>Add Options</Button>
                             <h2>{this.state.newItem.options.map( (item, i)  => 
                                     <p key={i}>{item}</p>
                                 )}</h2>
@@ -114,7 +151,7 @@ class Poll extends Component {
                 <br />
                 <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
-            <Button variant="contained" color="primary" onClick={this.handleClick}>Next</Button>
+            {/* <Button variant="contained" color="primary" onClick={this.handleClick}>Next</Button> */}
 
                         
                 

@@ -16,6 +16,7 @@ const pollRouter = require('./routes/poll.router');
 const optionsRouter = require('./routes/options.router');
 const currentRouter = require('./routes/current.router');
 const chatRouter = require('./routes/chat.router');
+const voteRouter = require('./routes/vote.router');
 
 
 
