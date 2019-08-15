@@ -4,9 +4,23 @@ import Button from '@material-ui/core/Button';
 import PeopleIcon from '@material-ui/icons/People';
 import ChatBar from'../ChatBar/ChatBar';
 import ChartPoll from '../ChartPoll/ChartPoll';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
 
 
+const styles = theme => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        width: '300px',
+        height: '150px',
+        marginLeft: '45px',
+        marginBottom: '10px',
+        marginTop: '50px'
 
+    },
+});
 
 
 class Event extends Component {
@@ -25,10 +39,6 @@ class Event extends Component {
         this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id })
         this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id })
 
-
-
-
-
     }
 
     handleClick = () => {
@@ -41,6 +51,7 @@ class Event extends Component {
 
 
     render() {
+        const { classes } = this.props;
 
         return (
             <div>
@@ -56,14 +67,18 @@ class Event extends Component {
                         <li key={i}>{item.username}</li>
                     )}
                      </div>
+                
                 <div className="poll">
+                    <Paper className={classes.root}>
                     <h4>Poll Question:</h4>
                     {this.props.reduxStore.poll.map((item, i) =>
                         <>
                             <p key={i}>{item.question}</p>
                         </>
                     )}
+                    </Paper>
                 </div>
+
                 <ChartPoll event_id={this.props.match.params.id} voteOne={this.props.reduxStore.votes} voteTwo={this.props.reduxStore.votesTwo} voteThree={this.props.reduxStore.votesThree} voteFour={this.props.reduxStore.votesFour}/>
                  
                 &nbsp;
@@ -89,4 +104,4 @@ const putReduxStoreOnProps = (reduxStore) => ({
 })
 
 
-export default connect(putReduxStoreOnProps)(Event);
+export default withStyles(styles)(connect(putReduxStoreOnProps)(Event));

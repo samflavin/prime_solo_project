@@ -3,7 +3,22 @@ import { connect } from 'react-redux';
 // import TextFields from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Doughnut } from 'react-chartjs-2';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = theme => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        width: '300px',
+        height: '500px',
+        marginLeft: '45px',
+        marginBottom: '50px',
+        marginTop: '50px'
+
+    },
+});
 
 
 class ChartPoll extends Component {
@@ -43,13 +58,7 @@ componentDidMount(){
 
 state = {
     labels: [],
-    count: {
-        one: Number(this.props.voteOne),
-        two: 1,
-        three: 0,
-        four: 0,
-    }
-
+   
 }
 
 
@@ -78,33 +87,29 @@ state = {
             }]
         }
     
-        
+        const { classes } = this.props;
+
 
         return (
            
             <>
+            <Paper className={classes.root}>
             <div>
-                <h2>Doughnut Title Here</h2>
+               
+                <h4>{this.props.reduxStore.description.event_name}</h4>
                     Options
                 <Doughnut data={data} />
+                
             </div>
-            <section className="chart">
             <div className="options">
                 <h6>Poll Options:</h6>
                 {this.props.reduxStore.options.map((item, i) =>
                     <>
-                        <p key={i}>{i + 1}.  {item.option}{labels.push(item.option)}   <Button variant="contained" color="primary" onClick={() => this.vote(i+1)}>Vote</Button> </p>
-                        
+                     <p key={i}>{i + 1}.  {item.option}{labels.push(item.option)}   <Button variant="contained" color="primary" onClick={() => this.vote(i+1)}>Vote</Button> </p> 
                     </>
-                )}
-
-                        
+                )}       
             </div>
-            <div>
-                {(JSON.stringify(Number(this.props.voteOne)))}
-            </div>
-            
-            </section>
+          </Paper>  
             </>
         );
     }
@@ -114,4 +119,4 @@ const putReduxStoreOnProps = (reduxStore) => ({
 })
 
 
-export default connect(putReduxStoreOnProps)(ChartPoll);
+export default withStyles(styles)(connect(putReduxStoreOnProps)(ChartPoll));
