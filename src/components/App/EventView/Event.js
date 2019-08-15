@@ -100,7 +100,7 @@ class Event extends Component {
         if (this.state.isEdit){
             return (
             <>
-            <h1><PeopleIcon></PeopleIcon>{this.props.reduxStore.description.event_name}<PeopleIcon></PeopleIcon></h1>
+            <h1><PeopleIcon></PeopleIcon> {this.props.reduxStore.description.event_name} <PeopleIcon></PeopleIcon></h1>
             <Paper className={classes.root}>
                 <h4>Description:</h4>
                         <TextField type="text" value={this.state.description.description}
@@ -159,7 +159,9 @@ class Event extends Component {
                 <center><Paper className={classes.root}>
                     <h4>Description:</h4>
                     <p>{this.props.reduxStore.description.description}</p>
-                </Paper ></center>
+
+                </Paper ><Button variant="contained" color="secondary" onClick={this.editMode}>Edit</Button>
+</center>
                 
             <Grid container >
             

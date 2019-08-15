@@ -5,9 +5,9 @@ function* editDescription(action) {
     try {
         console.log('in edit description saga, action.payload is', action.payload)
 
-        // const response = yield Axios.put('/api/events', action.payload);
-        // console.log(response.data.id);
-        // yield put({ type: 'SET_EVENTID', payload: response.data.id });
+        const response = yield Axios.put('/api/events/editDescription', action.payload);
+        console.log(response.data.id);
+        yield put({ type: 'GET_DESCRIPTION', payload: action.payload.event_id });
 
     } catch (error) {
         console.log('Error with getting users:', error);
@@ -31,10 +31,10 @@ function* editDescription(action) {
 //     }
 // }
 
-function* descriptionSaga() {
+function* editDescriptionSaga() {
     yield takeEvery('SET_EDIT_DESCRIPTION', editDescription);
     // yield takeEvery('GET_DESCRIPTION', getDescription);
 
 }
 
-export default descriptionSaga;
+export default editDescriptionSaga;

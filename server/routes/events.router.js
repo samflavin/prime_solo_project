@@ -54,6 +54,22 @@ router.get('/:id', (req, res) => {
 
 });
 
+//Post event and return id
+router.put('/editDescription', (req, res) => {
+    console.log(req.body)
+    const sqlText = `update event set description =$1 where event.id=$2;`;
+    pool.query(sqlText, [req.body.description, req.body.event_id])
+        .then((response) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error updating event description in db`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+
+});
+
+
 
 
 
