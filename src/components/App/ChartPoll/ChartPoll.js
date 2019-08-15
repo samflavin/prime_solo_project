@@ -9,13 +9,13 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
         width: '300px',
         height: '500px',
         marginLeft: '45px',
-        marginBottom: '50px',
-        marginTop: '50px'
+        // marginBottom: '50px',
+        marginTop: '20px'
 
     },
 });
@@ -61,9 +61,6 @@ state = {
    
 }
 
-
-
-  
     render() {
 
         const labels = []; 
@@ -91,22 +88,26 @@ state = {
 
 
         return (
+            
            
             <>
             <Paper className={classes.root}>
             <div>
-               
-                <h4>{this.props.reduxStore.description.event_name}</h4>
                     Options
                 <Doughnut data={data} />
                 
             </div>
             <div className="options">
                 <h6>Poll Options:</h6>
-                {this.props.reduxStore.options.map((item, i) =>
-                    <>
-                     <p key={i}>{i + 1}.  {item.option}{labels.push(item.option)}   <Button variant="contained" color="primary" onClick={() => this.vote(i+1)}>Vote</Button> </p> 
-                    </>
+                {this.props.reduxStore.options.map((item, i) => {
+                    console.log(item.option)
+                    return(
+                        <>
+                            <p key={i}>{i + 1}.  {item.option}   <Button variant="contained" color="primary" onClick={() => this.vote(i + 1)}>Vote</Button> </p>
+                        </>
+                    )
+                }
+
                 )}       
             </div>
           </Paper>  
@@ -120,3 +121,5 @@ const putReduxStoreOnProps = (reduxStore) => ({
 
 
 export default withStyles(styles)(connect(putReduxStoreOnProps)(ChartPoll));
+
+// { labels.push(item.option) }  put next to item.option

@@ -16,13 +16,14 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
     width: '200px',
     height: '200px',
     marginLeft: '445px',
     marginBottom: '50px',
-    marginTop: '50px'
+    marginTop: '50px',
+    overflow: 'auto',
     
   },
 });
@@ -63,7 +64,6 @@ class UserPage extends Component {
 
     <main className="App">
             <Paper className={classes.root}>
-              <p>Your ID is: {this.props.user.id}</p>
               &nbsp;
               <Link to={'/event'}>You currently have {this.props.state.currentEvent.length > 0 && this.props.state.currentEvent[0].count} active events!</Link>
               <p></p>
