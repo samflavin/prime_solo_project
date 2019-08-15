@@ -17,7 +17,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2,
         width: '300px',
         height: '100px',
-        marginLeft: '45px',
+        marginLeft: '5px',
         marginBottom: '10px',
         marginTop: '20px'
 
@@ -30,8 +30,18 @@ const styles = theme => ({
         height: '100px',
         marginLeft: '45px',
         marginBottom: '10px',
-        marginTop: '40px',
+        marginTop: '10px',
         overflow: 'auto',
+    },
+    poll: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 5,
+        paddingBottom: theme.spacing.unit * 5,
+        width: '300px',
+        height: '50px',
+        marginLeft: '200px',
+        marginBottom: '10px',
+        marginTop: '20px'
 
     }
 });
@@ -101,18 +111,18 @@ class Event extends Component {
             return (
             <>
             <h1><PeopleIcon></PeopleIcon> {this.props.reduxStore.description.event_name} <PeopleIcon></PeopleIcon></h1>
-            <Paper className={classes.root}>
+           <center><Paper className={classes.root}>
                 <h4>Description:</h4>
                         <TextField type="text" value={this.state.description.description}
-                            onChange={(event) => this.handleChangeFor(event, 'description')} />            </Paper>
+                            onChange={(event) => this.handleChangeFor(event, 'description')} /> </Paper></center> 
             <Grid container >
                 
 
                 {/* <pre>{JSON.stringify(this.props.reduxStore, null, 2)}</pre> */}
-                <pre>{JSON.stringify(this.state, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
 
                     <Grid item xs={6}>
-                        <Paper className={classes.root}>
+                        <Paper className={classes.poll}>
                             <h4>Poll Question:</h4>
                             {this.props.reduxStore.poll.map((item, i) =>
                                 <>
@@ -170,7 +180,7 @@ class Event extends Component {
                 <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
 
                     <Grid item xs={6}>
-                        <Paper className={classes.root}>
+                        <Paper className={classes.poll}>
                             <h4>Poll Question:</h4>
                             {this.props.reduxStore.poll.map((item, i) =>
                                 <>

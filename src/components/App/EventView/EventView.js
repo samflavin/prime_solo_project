@@ -14,7 +14,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2,
         width: '200px',
         height: '150px',
-        marginLeft: '445px',
+        marginLeft: '4px',
         marginBottom: '50px',
         marginTop: '20px'
 
@@ -31,6 +31,7 @@ class EventView extends Component {
         console.log('user id', this.props.reduxStore.user.id)
     this.props.dispatch({ type: 'FETCH_EVENTLIST', payload: this.props.reduxStore.user.id });
     this.props.dispatch({ type: 'FETCH_INVITATIONLIST', payload: this.props.reduxStore.user.id });
+    this.props.dispatch({ type: 'GET_DESCRIPTION', payload: this.props.reduxStore.user.id });
 
 
     }
@@ -64,22 +65,24 @@ class EventView extends Component {
             {/* {JSON.stringify(this.props.reduxStore.currentEvent)} */}
             <h2>Current Events:</h2>
                 <h5>My Events</h5>
-                <Paper style={{overflow: 'auto' }} className={classes.root}>
+                <center><Paper style={{overflow: 'auto' }} className={classes.root}>
                
                 <ul>
                     {this.props.reduxStore.currentEvent.map((item, i) =>
                         <Link to={`/view/${item.id}`}> <li key={i}>{item.event_name}</li></Link>
                     )}
                 </ul>
-            </Paper>
+                </Paper></center>
             <h5>My Invitations</h5>
+               <center>
                 <Paper style={{ overflow: 'auto' }} className={classes.root}>
                 <ul>
                     {this.props.reduxStore.invitations.map((item, i) =>
                         <Link to={`/view/${item.event_id}`}> <li key={i}>{item.event_name}</li></Link>
                     )}
                 </ul>
-            </Paper>
+                </Paper>
+                </center> 
                
                 <hr />
                 &nbsp;

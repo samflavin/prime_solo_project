@@ -13,7 +13,7 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 4,
         width: '300px',
         height: '500px',
-        marginLeft: '45px',
+        marginLeft: '200px',
         // marginBottom: '50px',
         marginTop: '20px'
 
@@ -101,9 +101,10 @@ state = {
                 <h6>Poll Options:</h6>
                 {this.props.reduxStore.options.map((item, i) => {
                     console.log(item.option)
+                    labels.push(item.option) 
                     return(
                         <>
-                            <p key={i}>{i + 1}.  {item.option}   <Button variant="contained" color="primary" onClick={() => this.vote(i + 1)}>Vote</Button> </p>
+                            <p key={i}>{i +1}. {item.option} <Button variant="contained" color="primary" onClick={() => this.vote(i + 1)}>Vote</Button> </p>
                         </>
                     )
                 }

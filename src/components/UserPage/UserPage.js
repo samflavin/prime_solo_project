@@ -20,7 +20,7 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 4,
     width: '200px',
     height: '200px',
-    marginLeft: '445px',
+    marginLeft: '5px',
     marginBottom: '50px',
     marginTop: '50px',
     overflow: 'auto',
@@ -63,7 +63,7 @@ class UserPage extends Component {
     </h2>
 
     <main className="App">
-            <Paper className={classes.root}>
+            <center><Paper className={classes.root}>
               &nbsp;
               <Link to={'/event'}>You currently have {this.props.state.currentEvent.length > 0 && this.props.state.currentEvent[0].count} active events!</Link>
               <p></p>
@@ -71,7 +71,8 @@ class UserPage extends Component {
 
               &nbsp;
            <p></p>
-            </Paper>
+            </Paper></center>
+            
     &nbsp;
     <Button variant="contained" color="primary" onClick={this.handleClick}>Create an Event!<EventIcon></EventIcon></Button>
     &nbsp;
