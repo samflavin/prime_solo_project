@@ -8,22 +8,34 @@ import { Doughnut } from 'react-chartjs-2';
 
 class ChartPoll extends Component {
 componentDidMount(){
-    this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id })
-
+    this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id });
+    this.props.dispatch({ type: 'GET_TWO', payload: this.props.event_id });
+    this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id });
+    this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id });
 }
 
     //dispatch vote info to db
     vote = (voteNumber) => {
         console.log(voteNumber)
         if (voteNumber === 1){
+
             this.props.dispatch({ type: 'ADD_ONE', payload: { vote_id: 1, event_id: this.props.event_id }})
             this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id  })
+
         } else if (voteNumber === 2){
-            this.setState({ two: ++this.state.count.two })
+
+            this.props.dispatch({ type: 'ADD_TWO', payload: { vote_id: 2, event_id: this.props.event_id } })
+            this.props.dispatch({ type: 'GET_TWO', payload: this.props.event_id })
+
         } else if (voteNumber === 3) {
-            this.setState({ three: ++this.state.count.three })
+
+            this.props.dispatch({ type: 'ADD_THREE', payload: { vote_id: 3, event_id: this.props.event_id } })
+            this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id })
+           
         } else if (voteNumber === 4) {
-            this.setState({ four: ++this.state.count.four })
+            
+            this.props.dispatch({ type: 'ADD_FOUR', payload: { vote_id: 4, event_id: this.props.event_id } })
+            this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id })
         }
         
     }
@@ -51,7 +63,7 @@ state = {
             //labels get data from state
             labels: labels,
             datasets: [{
-                data: [Number(this.props.voteOne), this.state.count.two, this.state.count.three, this.state.count.four],
+                data: [Number(this.props.voteOne), Number(this.props.voteTwo), Number(this.props.voteThree), Number(this.props.voteFour)],
                 backgroundColor: [
                     '#FF6384',
                     '#36A2EB',
@@ -72,8 +84,8 @@ state = {
            
             <>
             <div>
-                <h2>Doughnut Example</h2>
-                displayName: 'DoughnutExample';
+                <h2>Doughnut Title Here</h2>
+                    Options
                 <Doughnut data={data} />
             </div>
             <section className="chart">

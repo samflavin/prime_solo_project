@@ -20,7 +20,13 @@ class Event extends Component {
         this.props.dispatch({ type: 'GET_OPTIONS', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_MSG', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_VOTE', payload: this.props.match.params.id });
-        this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id })
+        this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id });
+        this.props.dispatch({ type: 'GET_TWO', payload: this.props.event_id });
+        this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id })
+        this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id })
+
+
+
 
 
     }
@@ -58,7 +64,7 @@ class Event extends Component {
                         </>
                     )}
                 </div>
-                <ChartPoll event_id={this.props.match.params.id} voteOne={this.props.reduxStore.votes} />
+                <ChartPoll event_id={this.props.match.params.id} voteOne={this.props.reduxStore.votes} voteTwo={this.props.reduxStore.votesTwo} voteThree={this.props.reduxStore.votesThree} voteFour={this.props.reduxStore.votesFour}/>
                  
                 &nbsp;
                 <div>

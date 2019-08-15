@@ -27,9 +27,9 @@ function* getOne(action) {
     }
 }
 
-function* chatSaga() {
+function* voteSaga() {
     yield takeEvery('ADD_ONE', addOne);
     yield takeEvery('GET_ONE', getOne);
 }
 
-export default chatSaga;
+export default voteSaga;

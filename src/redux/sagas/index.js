@@ -10,7 +10,10 @@ import prepPollSaga from './prepPollSaga';
 import optionsSaga from './optionsSaga'
 import currentEventSaga from './currentEventSaga';
 import chatSaga from './chatSaga';
-import voteSaga from './voteSaga'
+import voteSaga from './voteSaga';
+import voteTwoSaga from './voteTwoSaga';
+import voteThreeSaga from './voteThreeSaga';
+import voteFourSaga from './voteFourSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -41,5 +44,10 @@ export default function* rootSaga() {
     currentEventSaga(),
     chatSaga(),
     voteSaga(),
+    voteTwoSaga(),
+    voteThreeSaga(),
+    voteFourSaga(),
+
+
   ]);
 }

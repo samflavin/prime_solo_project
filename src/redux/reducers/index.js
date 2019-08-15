@@ -12,6 +12,9 @@ import currentEvent from './currentEventReducer';
 import messages from './messageReducer';
 import invitations from './invitationsReducer';
 import votes from './voteReducer';
+import votesTwo from './voteTwoReducer';
+import votesThree from './voteThreeReducer';
+import votesFour from './voteFourReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,6 +36,9 @@ const rootReducer = combineReducers({
   messages, //holds chat messages
   invitations, //hols all invitations
   votes, //holds all votes 
+  votesTwo, //holds all two votes
+  votesThree, //holds all three votes
+  votesFour,  // holds all four votes
 });
 
 export default rootReducer;
