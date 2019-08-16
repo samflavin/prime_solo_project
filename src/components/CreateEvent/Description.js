@@ -4,10 +4,26 @@ import Button from '@material-ui/core/Button';
 import TextFields from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { withStyles } from '@material-ui/core/styles';
 
 
 
 
+const styles = theme => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '350px',
+        height: '350px',
+        marginLeft: '1px',
+        marginRight: '1px',
+        marginBottom: '50px',
+        marginTop: '50px',
+        overflow: 'auto',
+
+    },
+});
 
 
 class Description extends Component {
@@ -47,17 +63,18 @@ class Description extends Component {
 
     render() {
        
-      
+        const { classes } = this.props;
+
         return (
             <div>
 {/*  {JSON.stringify(this.props.reduxStore)} */}
                 <h1>Description</h1>
                 <h4>Tell your guests about the event to which they're being invited!</h4>
-            <Card>
+           <center> <Card className={classes.root}>
                 <CardContent>
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >
 
-                    <label><span className="required">Name of event:</span></label>
+                    <label><span className="required">Name of event:  </span></label>
                     <TextFields type="text" value={this.state.newItem.event_name}
                         onChange={(event) => this.handleChangeFor(event, 'event_name')} />
                 </section>
@@ -70,13 +87,14 @@ class Description extends Component {
                 </section>
                 </CardContent >
                 </Card>
-
+                </center>
+            <footer>
             &nbsp;
             <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
             &nbsp;
             <Button variant="contained" color="primary" onClick={(event) => this.handleClick(event, this.state.newItem)}>Next</Button>
              &nbsp;
-   
+            </footer>
             </div>
         )
     }
@@ -88,4 +106,4 @@ const putReduxStoreOnProps = (reduxStore) => ({
 })
 
 
-export default connect(putReduxStoreOnProps)(Description);
+export default withStyles(styles)(connect(putReduxStoreOnProps)(Description));

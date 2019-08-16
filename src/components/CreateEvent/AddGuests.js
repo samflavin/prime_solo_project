@@ -2,8 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import PeopleIcon from '@material-ui/icons/People';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
 
 
+const styles = theme => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '380px',
+        height: '200px',
+        marginLeft: '5px',
+        marginBottom: '50px',
+        marginTop: '50px',
+        overflow: 'auto',
+
+    },
+});
 
 
 class AddGuests extends Component {
@@ -67,13 +83,15 @@ class AddGuests extends Component {
 
 
     render() {
+        const { classes } = this.props;
 
-        console.log(this.props.reduxStore.poll)
         return (
             <div>
-                {JSON.stringify(this.props.reduxStore.poll)}
+                {/* {JSON.stringify(this.props.reduxStore.poll)} */}
                 <h1><PeopleIcon></PeopleIcon> Add Guests  <PeopleIcon></PeopleIcon></h1>
-                
+                <center><Paper className={classes.root} > 
+                 <hr />
+
            <ul>
 
                 {this.props.reduxStore.guests.map((item, i) =>
@@ -84,10 +102,11 @@ class AddGuests extends Component {
             {/* <button onClick={this.send}>Send</button> */}
                 <hr />
                 &nbsp;
+            </Paper>  </center>
             <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
             <Button variant="contained" color="primary" onClick={this.handleClick}>Next</Button>
-
+                
             </div>
         )
     }
@@ -98,4 +117,4 @@ const putReduxStoreOnProps = (reduxStore) => ({
 })
 
 
-export default connect(putReduxStoreOnProps)(AddGuests);
+export default withStyles(styles)(connect(putReduxStoreOnProps)(AddGuests));

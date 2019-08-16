@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = theme => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '380px',
+        height: '200px',
+        marginLeft: '5px',
+        marginBottom: '50px',
+        marginTop: '50px',
+        overflow: 'auto',
+
+    },
+});
 
 
 class Submit extends Component {
@@ -37,15 +53,15 @@ class Submit extends Component {
 
     
     render() {
-        console.log(this.props.reduxStore.description)
-        return (
+        const { classes } = this.props;        return (
             <div>
 
                 <h1>Review and Send</h1>
                 
-                {JSON.stringify(this.props.reduxStore.poll)}
+                {/* {JSON.stringify(this.props.reduxStore.poll)} */}
+                <center><Paper className={classes.root} > 
             <div>
-                    <p> Welcome to {this.props.reduxStore.user.username}'s Event: {this.props.reduxStore.description.event_name} !</p> 
+                    <h4> Welcome to {this.props.reduxStore.user.username}'s Event: {this.props.reduxStore.description.event_name} !</h4> 
 
                     <p> description:{this.props.reduxStore.description.description}</p> 
                     <hr />
@@ -73,7 +89,7 @@ class Submit extends Component {
                 </ul>
                 <hr />
             </div>
-
+            </Paper></center>
                 &nbsp;
             <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
@@ -83,6 +99,7 @@ class Submit extends Component {
 
 
             </div>
+            
         )
     }
 }
@@ -92,4 +109,4 @@ const putReduxStoreOnProps = (reduxStore) => ({
 })
 
 
-export default connect(putReduxStoreOnProps)(Submit);
+export default withStyles(styles)(connect(putReduxStoreOnProps)(Submit));

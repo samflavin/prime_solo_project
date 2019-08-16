@@ -3,8 +3,23 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 //import PollItem from './pollItem/PollItem';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = theme => ({
+    root: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '380px',
+        height: '500px',
+        marginLeft: '5px',
+        marginBottom: '50px',
+        marginTop: '50px',
+        overflow: 'auto',
 
+    },
+});
 
 class Poll extends Component {
 
@@ -90,17 +105,18 @@ class Poll extends Component {
     }
 
 
-    
 
     render() {
-        
+
+        const { classes } = this.props;
+
         return (
 
             <>
                 <h2>Create a Poll Question for your Guests</h2>
+                <center><Paper className={classes.root}>
                 <section>
-{JSON.stringify(this.props.reduxStore.event)}
-                    <label><span className="required">Question:</span></label>
+                    <label><span className="required">Question:  </span></label>
                     <TextField type="text" value={this.state.newItem.question}
                         onChange={(event) => this.handleChangeFor(event, 'question')} />
                     <h5>Create options for them to vote on too!</h5>
@@ -108,25 +124,26 @@ class Poll extends Component {
                             <h3>{this.state.newItem.question}</h3>
                        <br />
 
-                    <label>1.</label>
+                    <label>1.  </label>
                     <TextField type="text" value={this.state.optionInput1}
                         onChange={(event) => this.handleChangeForOptions(event, 'optionInput1')} />
                         &nbsp;
 
-                        <label>2.</label>
+                        <label>2.  </label>
                           <TextField type="text" value={this.state.optionInput2}
                         onChange={(event) => this.handleChangeForOptions(event, 'optionInput2')} />
                         &nbsp;
 
-                         <label>3.</label>
+                         <label>3.  </label>
                           <TextField type="text" value={this.state.optionInput3}
                         onChange={(event) => this.handleChangeForOptions(event, 'optionInput3')} />
                         &nbsp;
 
-                        <label>4.</label>
+                        <label>4. </label>
                           <TextField type="text" value={this.state.optionInput4}
                         onChange={(event) => this.handleChangeForOptions(event, 'optionInput4')} />
-                        &nbsp;
+                        
+                        <p></p>
                     <Button variant="contained" color="primary" onClick={this.addOption}>Add Options</Button>
                             <h2>{this.state.newItem.options.map( (item, i)  => 
                                     <p key={i}>{item}</p>
@@ -139,7 +156,7 @@ class Poll extends Component {
                         <br />
                         {/* {JSON.stringify(this.props.reduxStore.poll.question)}
                 {JSON.stringify(this.props.reduxStore.poll.options)} */}
-                {JSON.stringify(this.props.reduxStore.poll)}
+                {/* {JSON.stringify(this.props.reduxStore.poll)} */}
                         <section>
                     {/* {this.props.reduxStore.poll.map((item, i) =>
                         <>
@@ -148,6 +165,7 @@ class Poll extends Component {
                         </>
                     )} */}
                         </section>
+                </Paper></center>
                 <br />
                 <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
@@ -167,4 +185,4 @@ const putReduxStoreOnProps = (reduxStore) => ({
 })
 
 
-export default connect(putReduxStoreOnProps)(Poll);
+export default withStyles(styles)(connect(putReduxStoreOnProps)(Poll));
