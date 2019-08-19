@@ -9,7 +9,7 @@ const router = express.Router();
 //gets all deescriptions of with event id
 router.get('/description/:id', (req, res) => {
     console.log(req.params.id)
-    const sqlText = `select description, event_name from "event" where id=$1`;
+    const sqlText = `select description, event_name, user_id from "event" where id=$1`;
     pool.query(sqlText, [req.params.id])
         .then((response) => {
 
@@ -40,6 +40,22 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+    console.log(req.params)
+    const sqlText = `select event.id from event where "user_id"=$1`;
+    pool.query(sqlText, [req.params.id])
+        .then((response) => {
+            console.log(`got event info`, response.rows)
+            res.send(response.rows);
+        })
+        .catch((error) => {
+            console.log(`Error getting events from db`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+
+});
+
+// gets event user id
+router.get('/getId', (req, res) => {
     console.log(req.params)
     const sqlText = `select event.id from event where "user_id"=$1`;
     pool.query(sqlText, [req.params.id])

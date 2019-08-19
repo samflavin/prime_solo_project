@@ -15,10 +15,23 @@ const styles = theme => ({
         height: '500px',
         marginLeft: '5px',
         marginBottom: '50px',
-        marginTop: '50px',
+        marginTop: '20px',
         overflow: 'auto',
 
     },
+    header: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '350px',
+        height: '80px',
+        marginLeft: '1px',
+        marginRight: '1px',
+        marginBottom: '20px',
+        marginTop: '20px',
+        overflow: 'auto',
+    },
+
 });
 
 class Poll extends Component {
@@ -113,7 +126,10 @@ class Poll extends Component {
         return (
 
             <>
+               <center><Paper className={classes.header}>
                 <h2>Create a Poll Question for your Guests</h2>
+                </Paper></center >
+
                 <center><Paper className={classes.root}>
                 <section>
                     <label><span className="required">Question:  </span></label>

@@ -16,10 +16,12 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         width: '300px',
-        height: '100px',
+        height: '150px',
         marginLeft: '5px',
         marginBottom: '10px',
-        marginTop: '20px'
+        marginTop: '20px',
+        overflow: 'auto',
+
 
     },
     guest:{
@@ -29,8 +31,8 @@ const styles = theme => ({
         width: '300px',
         height: '100px',
         marginLeft: '45px',
-        marginBottom: '10px',
-        marginTop: '10px',
+        marginBottom: 'px',
+        marginTop: '17px',
         overflow: 'auto',
     },
     poll: {
@@ -39,9 +41,11 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 5,
         width: '300px',
         height: '50px',
-        marginLeft: '200px',
+        marginLeft: '230px',
         marginBottom: '10px',
-        marginTop: '20px'
+        marginTop: '20px',
+        overflow: 'auto',
+
 
     }
 });
@@ -60,6 +64,7 @@ class Event extends Component {
     componentDidMount() {
         console.log('user id', this.props.reduxStore.user.id)
         this.props.dispatch({ type: 'GET_DESCRIPTION', payload: this.props.match.params.id });
+        // this.props.dispatch({ type: 'GET_EVENT_USER_ID', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_INVITEES', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_POLL', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_OPTIONS', payload: this.props.match.params.id });
@@ -91,9 +96,8 @@ class Event extends Component {
             isEdit: false
         });
         this.props.dispatch({ type: 'SET_EDIT_DESCRIPTION', payload: { description: this.state.description.description, event_id: this.props.match.params.id} });
-
-
     }
+
     handleChangeFor = (event, property) => {
         this.setState({
             description: {
@@ -103,6 +107,16 @@ class Event extends Component {
         })
     }
 
+    checkUser = () => {
+        if (this.props.reduxStore.user.id === this.props.reduxStore.description.user_id) {
+        return  <Button variant = "contained" color = "secondary" onClick = { this.editMode } > Edit</Button>
+ 
+    } else {
+
+        return <></>
+    }
+    };
+
 
     render() {
         const { classes } = this.props;
@@ -110,8 +124,9 @@ class Event extends Component {
         if (this.state.isEdit){
             return (
             <>
-            <h1><PeopleIcon></PeopleIcon> {this.props.reduxStore.description.event_name} <PeopleIcon></PeopleIcon></h1>
+            
            <center><Paper className={classes.root}>
+                        <h1><PeopleIcon></PeopleIcon> {this.props.reduxStore.description.event_name} <PeopleIcon></PeopleIcon></h1>
                 <h4>Description:</h4>
                         <TextField type="text" value={this.state.description.description}
                             onChange={(event) => this.handleChangeFor(event, 'description')} /> </Paper></center> 
@@ -123,21 +138,25 @@ class Event extends Component {
 
                     <Grid item xs={6}>
                         <Paper className={classes.poll}>
-                            <h4>Poll Question:</h4>
+                                <TextField type="text" 
+                                     />
+                            {/* <h4>Poll Question:</h4>
                             {this.props.reduxStore.poll.map((item, i) =>
                                 <>
                                     <p key={i}>{item.question}</p>
                                 </>
-                            )}
+                            )} */}
                         </Paper>
                     </Grid>
               
                 <Grid item xs={6}>
                 <Paper className={classes.guest}>
                   <h4>Guest List:</h4>
-                    {this.props.reduxStore.invitees.map((item, i) =>
+                                <TextField type="text"
+                                />
+                    {/* {this.props.reduxStore.invitees.map((item, i) =>
                         <li key={i}>{item.username}</li>
-                    )}
+                    )} */}
                     </Paper>
                     </Grid>
                 
@@ -165,20 +184,16 @@ class Event extends Component {
         } else {
         return (
             <>
-            <h1><PeopleIcon></PeopleIcon>{this.props.reduxStore.description.event_name}<PeopleIcon></PeopleIcon></h1>
                 <center><Paper className={classes.root}>
+                <h1><PeopleIcon></PeopleIcon>{this.props.reduxStore.description.event_name}<PeopleIcon></PeopleIcon></h1>
+
                     <h4>Description:</h4>
                     <p>{this.props.reduxStore.description.description}</p>
 
-                </Paper ><Button variant="contained" color="secondary" onClick={this.editMode}>Edit</Button>
+                </Paper >
 </center>
                 
             <Grid container >
-            
-
-                {/* <pre>{JSON.stringify(this.props.reduxStore, null, 2)}</pre>
-                <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
-
                     <Grid item xs={6}>
                         <Paper className={classes.poll}>
                             <h4>Poll Question:</h4>
@@ -215,7 +230,7 @@ class Event extends Component {
                 <footer>
                     <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                     &nbsp;
-                <Button variant="contained" color="secondary" onClick={this.editMode}>Edit</Button>
+                    {this.checkUser()}
 
                 </footer>
             </>

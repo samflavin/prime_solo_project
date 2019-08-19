@@ -5,6 +5,7 @@ import TextFields from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
 
 
@@ -19,10 +20,24 @@ const styles = theme => ({
         marginLeft: '1px',
         marginRight: '1px',
         marginBottom: '50px',
-        marginTop: '50px',
+        marginTop: '20px',
         overflow: 'auto',
 
     },
+    header: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '350px',
+        height: '100px',
+        marginLeft: '1px',
+        marginRight: '1px',
+        marginBottom: '20px',
+        marginTop: '20px',
+        overflow: 'auto',
+
+    },
+    
 });
 
 
@@ -67,9 +82,10 @@ class Description extends Component {
 
         return (
             <div>
-{/*  {JSON.stringify(this.props.reduxStore)} */}
+                <center><Paper className={classes.header}>
                 <h1>Description</h1>
                 <h4>Tell your guests about the event to which they're being invited!</h4>
+                </Paper ></center>
            <center> <Card className={classes.root}>
                 <CardContent>
                 <section onSubmit={(event) => this.handleSubmit(event, this.state.newItem)} >

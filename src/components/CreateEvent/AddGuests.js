@@ -19,6 +19,18 @@ const styles = theme => ({
         overflow: 'auto',
 
     },
+    header: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '350px',
+        height: '80px',
+        marginLeft: '1px',
+        marginRight: '1px',
+        marginBottom: '20px',
+        marginTop: '20px',
+        overflow: 'auto',
+    },
 });
 
 
@@ -69,17 +81,6 @@ class AddGuests extends Component {
        return  <button onClick={(event) => this.uninviteGuest(user)}>Uninvite</button>
     }
 }
-    // send = () => {
-    //     console.log(`You're invitation has been sent`);
-    //     this.props.dispatch({ type: 'PREP_INVITEES', payload: this.state.invitees });
-    //     // clear out state for next round
-    //     this.setState({
-    //         invitees: []
-    //     });
-    //     console.log('remember to clear state')
-    // }
-
-
 
 
     render() {
@@ -87,8 +88,10 @@ class AddGuests extends Component {
 
         return (
             <div>
-                {/* {JSON.stringify(this.props.reduxStore.poll)} */}
+                <center><Paper className={classes.header} > 
                 <h1><PeopleIcon></PeopleIcon> Add Guests  <PeopleIcon></PeopleIcon></h1>
+                </Paper ></center>
+
                 <center><Paper className={classes.root} > 
                  <hr />
 

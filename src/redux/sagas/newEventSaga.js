@@ -1,6 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import Axios from 'axios';
 
+
 function* createEvent(action) {
     console.log('in createEventSaga', action.payload)
     try {

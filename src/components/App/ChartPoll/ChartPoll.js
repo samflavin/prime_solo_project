@@ -13,9 +13,9 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 4,
         width: '300px',
         height: '500px',
-        marginLeft: '200px',
+        marginLeft: '230px',
         // marginBottom: '50px',
-        marginTop: '20px'
+        marginTop: '10px'
 
     },
 });

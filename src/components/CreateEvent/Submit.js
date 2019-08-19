@@ -17,6 +17,18 @@ const styles = theme => ({
         overflow: 'auto',
 
     },
+    header: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 4,
+        paddingBottom: theme.spacing.unit * 4,
+        width: '380px',
+        height: '70px',
+        marginLeft: '5px',
+        marginBottom: '50px',
+        marginTop: '50px',
+        overflow: 'auto',
+
+    },
 });
 
 
@@ -26,6 +38,8 @@ class Submit extends Component {
         // Do javascript fun stuff?
         alert('Congratulations Youve just created a new event!');
         this.props.history.push('/home');
+        this.props.dispatch({ type: 'SEND_TEXT' });
+
     }
 
     componentDidMount = () => {
@@ -44,20 +58,15 @@ class Submit extends Component {
     }
 
 
-    // parser = (options) => {
-    //     let newArray = [];
-    //     newArray.push(options);
-    //     console.log(' JSON parsing shit', JSON.parse(newArray))
-    //     return JSON.parse(newArray)
-    // }
 
     
     render() {
         const { classes } = this.props;        return (
             <div>
-
+                <center><Paper className={classes.header} > 
                 <h1>Review and Send</h1>
-                
+                </Paper></center>
+
                 {/* {JSON.stringify(this.props.reduxStore.poll)} */}
                 <center><Paper className={classes.root} > 
             <div>

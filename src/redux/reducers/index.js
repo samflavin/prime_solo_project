@@ -14,7 +14,8 @@ import invitations from './invitationsReducer';
 import votes from './voteReducer';
 import votesTwo from './voteTwoReducer';
 import votesThree from './voteThreeReducer';
-import votesFour from './voteFourReducer'
+import votesFour from './voteFourReducer';
+import eventUserId from './eventIdReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -39,6 +40,8 @@ const rootReducer = combineReducers({
   votesTwo, //holds all two votes
   votesThree, //holds all three votes
   votesFour,  // holds all four votes
+  eventUserId,  //holds event user id
+
 });
 
 export default rootReducer;

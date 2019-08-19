@@ -19,12 +19,22 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 4,
     paddingBottom: theme.spacing.unit * 4,
     width: '200px',
-    height: '200px',
+    height: '150px',
     marginLeft: '5px',
     marginBottom: '50px',
     marginTop: '50px',
     overflow: 'auto',
     
+  },
+  welcome: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
+    width: '200px',
+    height: '70px',
+    marginLeft: '5px',
+    marginBottom: '50px',
+    marginTop: '50px',
   },
 });
 
@@ -58,9 +68,11 @@ class UserPage extends Component {
     return(
       <>
     <div>
+   <center><Paper className={classes.welcome}>
     <h2 id="welcome">
-            <PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon>  Welcome, {this.props.user.username}!  <PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon>
+            <PeopleIcon></PeopleIcon>  Welcome, {this.props.user.username}!  <PeopleIcon></PeopleIcon>
     </h2>
+          </Paper></center>
 
     <main className="App">
             <center><Paper className={classes.root}>

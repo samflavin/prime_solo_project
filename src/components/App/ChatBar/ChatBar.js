@@ -11,7 +11,7 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 4,
         paddingBottom: theme.spacing.unit * 4,
         width: '300px',
-        height: '500px',
+        height: '600px',
         marginLeft: '45px',
         marginBottom: '10px',
         marginTop: '10px'
@@ -55,7 +55,7 @@ class ChatBar extends Component {
 
         return (
             <>
-            <Paper style={{ maxHeight: 450, overflow: 'auto' }} className={classes.root}>
+            <Paper style={{ maxHeight: 500, overflow: 'auto' }} className={classes.root}>
             <div className="chatBar">
             
                 <section>

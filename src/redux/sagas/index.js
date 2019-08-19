@@ -14,7 +14,9 @@ import voteSaga from './voteSaga';
 import voteTwoSaga from './voteTwoSaga';
 import voteThreeSaga from './voteThreeSaga';
 import voteFourSaga from './voteFourSaga';
-import editDescriptionSaga from './editDescriptionSaga'
+import editDescriptionSaga from './editDescriptionSaga';
+import textSaga from './textSaga';
+import eventIdSaga from './eventIdSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -49,6 +51,8 @@ export default function* rootSaga() {
     voteThreeSaga(),
     voteFourSaga(),
     editDescriptionSaga(),
+    textSaga(),
+    eventIdSaga(),
 
 
   ]);

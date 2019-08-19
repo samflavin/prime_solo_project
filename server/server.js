@@ -17,6 +17,7 @@ const optionsRouter = require('./routes/options.router');
 const currentRouter = require('./routes/current.router');
 const chatRouter = require('./routes/chat.router');
 const voteRouter = require('./routes/vote.router');
+const textRouter = require('./routes/text.router');
 
 
 
@@ -40,6 +41,9 @@ app.use('/api/options', optionsRouter);
 app.use('/api/current', currentRouter);
 app.use('/api/chat', chatRouter);
 app.use('/api/vote', voteRouter);
+app.use('/api/text', textRouter);
+
+//Twilio
 
 
 
