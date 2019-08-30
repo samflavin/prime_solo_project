@@ -38,7 +38,7 @@ class Submit extends Component {
         // Do javascript fun stuff?
         alert('Congratulations Youve just created a new event!');
         this.props.history.push('/home');
-        this.props.dispatch({ type: 'SEND_TEXT' });
+        this.props.dispatch({ type: 'SEND_TEXT', payload: { user: this.props.reduxStore.user.username, event: this.props.reduxStore.description.event_name } });
 
     }
 

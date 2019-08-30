@@ -1,9 +1,9 @@
 import { takeEvery } from 'redux-saga/effects';
 import Axios from 'axios';
 
-function* sendText() {
+function* sendText(action) {
     try {
-        yield Axios.get('/api/text');
+        yield Axios.post('/api/text', action.payload);
 
     } catch (error) {
         console.log('Error with getting users:', error);
