@@ -22,22 +22,22 @@ const styles = theme => ({
 
 
 class ChartPoll extends Component {
-componentDidMount(){
-    this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id });
-    this.props.dispatch({ type: 'GET_TWO', payload: this.props.event_id });
-    this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id });
-    this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id });
-}
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id });
+        this.props.dispatch({ type: 'GET_TWO', payload: this.props.event_id });
+        this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id });
+        this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id });
+    }
 
     //dispatch vote info to db
     vote = (voteNumber) => {
         console.log(voteNumber)
-        if (voteNumber === 1){
+        if (voteNumber === 1) {
 
-            this.props.dispatch({ type: 'ADD_ONE', payload: { vote_id: 1, event_id: this.props.event_id }})
-            this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id  })
+            this.props.dispatch({ type: 'ADD_ONE', payload: { vote_id: 1, event_id: this.props.event_id } })
+            this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id })
 
-        } else if (voteNumber === 2){
+        } else if (voteNumber === 2) {
 
             this.props.dispatch({ type: 'ADD_TWO', payload: { vote_id: 2, event_id: this.props.event_id } })
             this.props.dispatch({ type: 'GET_TWO', payload: this.props.event_id })
@@ -46,24 +46,24 @@ componentDidMount(){
 
             this.props.dispatch({ type: 'ADD_THREE', payload: { vote_id: 3, event_id: this.props.event_id } })
             this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id })
-           
+
         } else if (voteNumber === 4) {
-            
+
             this.props.dispatch({ type: 'ADD_FOUR', payload: { vote_id: 4, event_id: this.props.event_id } })
             this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id })
         }
-        
+
     }
 
 
-state = {
-    labels: [],
-   
-}
+    state = {
+        labels: [],
+
+    }
 
     render() {
 
-        const labels = []; 
+        const labels = [];
 
         const data = {
             //labels get data from state
@@ -83,35 +83,35 @@ state = {
                 ]
             }]
         }
-    
+
         const { classes } = this.props;
 
 
         return (
-            
-           
-            <>
-            <Paper className={classes.root}>
-            <div>
-                    Options
-                <Doughnut data={data} />
-                
-            </div>
-            <div className="options">
-                <h6>Poll Options:</h6>
-                {this.props.reduxStore.options.map((item, i) => {
-                    console.log(item.option)
-                    labels.push(item.option) 
-                    return(
-                        <>
-                            <p key={i}>{i +1}. {item.option} <Button variant="contained" color="primary" onClick={() => this.vote(i + 1)}>Vote</Button> </p>
-                        </>
-                    )
-                }
 
-                )}       
-            </div>
-          </Paper>  
+
+            <>
+                <Paper className={classes.root}>
+                    <div>
+                        Options
+                <Doughnut data={data} />
+
+                    </div>
+                    <div className="options">
+                        <h6>Poll Options:</h6>
+                        {this.props.reduxStore.options.map((item, i) => {
+                            console.log(item.option)
+                            labels.push(item.option)
+                            return (
+                                <>
+                                    <p key={i}>{i + 1}. {item.option} <Button variant="contained" color="primary" onClick={() => this.vote(i + 1)}>Vote</Button> </p>
+                                </>
+                            )
+                        }
+
+                        )}
+                    </div>
+                </Paper>
             </>
         );
     }

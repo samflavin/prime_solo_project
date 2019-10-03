@@ -228,8 +228,7 @@ class Event extends Component {
 
             </Grid>
                 <footer>
-                    <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
-                    &nbsp;
+w                    &nbsp;
                     {this.checkUser()}
 
                 </footer>

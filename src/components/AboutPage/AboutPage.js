@@ -9,7 +9,7 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        MakePlans is an application that allows you to create events and invite guests!
       </p>
     </div>
   </div>

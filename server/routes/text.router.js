@@ -17,7 +17,7 @@ const http = require('http');
 router.post('/sms', (req, res) => {
     const twiml = new MessagingResponse();
 console.log('DID THIS WORK?', req.body.Body)
-
+ww
     twiml.message('The Robots are coming! Head for the hills!');
 
     res.writeHead(200, { 'Content-Type': 'text/xml' });
