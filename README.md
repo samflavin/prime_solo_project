@@ -3,7 +3,7 @@
 MakePlans is an app design to help you do just that.  Users can create events with poll questions for guests to vote on.  When the invitation is sent out, each guest gets a text message notification.  This was design to facilitate speedy responses and enhance the planning process.
 
 
-##Images
+## Images
 *see screenshots in project folder
 
 ## Prerequisites
