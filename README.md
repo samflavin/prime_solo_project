@@ -1,5 +1,8 @@
 # MakePlans App
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+MakePlans is an app design to help you do just that.  Users can create events with poll questions for guests to vote on.  When the invitation is sent out, each guest gets a text message notification.  This was design to facilitate speedy responses and enhance the planning process.
+
+
+
 
 
 ## Prerequisites
