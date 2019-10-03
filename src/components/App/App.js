@@ -71,10 +71,6 @@ class App extends Component {
             <Route Submit path="/submit/:id" component={Submit} />
             <Route Event path="/event" component={EventView} />
             <Route Event path="/view/:id" component={Event} />
-
-
-
-          
             <Route render={() => <h1>404</h1>} />
           </Switch>
           <Footer />

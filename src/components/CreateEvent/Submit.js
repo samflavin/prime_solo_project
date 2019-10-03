@@ -45,8 +45,6 @@ class Submit extends Component {
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_DESCRIPTION', payload:this.props.match.params.id});
         this.props.dispatch({ type: 'FETCH_OPTIONS', payload: this.props.reduxStore.poll[0].id });
-
-
     }
 
     handleBack = () => {
@@ -56,9 +54,6 @@ class Submit extends Component {
         // Then programmatically  nav back to home
         this.props.history.push('/addGuest');
     }
-
-
-
     
     render() {
         const { classes } = this.props;        return (
@@ -66,19 +61,15 @@ class Submit extends Component {
                 <center><Paper className={classes.header} > 
                 <h1>Review and Send</h1>
                 </Paper></center>
-
-                {/* {JSON.stringify(this.props.reduxStore.poll)} */}
                 <center><Paper className={classes.root} > 
             <div>
                     <h4> Welcome to {this.props.reduxStore.user.username}'s Event: {this.props.reduxStore.description.event_name} !</h4> 
-
                     <p> description:{this.props.reduxStore.description.description}</p> 
                     <hr />
                     <ul> GuestList:
                     {this.props.reduxStore.invitees.map((item, i) =>
                        
-                            <li key={i}>{item.username}</li>
-                        
+                            <li key={i}>{item.username}</li>  
                     )}
                     </ul>
                     <hr />
@@ -86,11 +77,9 @@ class Submit extends Component {
                     {this.props.reduxStore.poll.map((item, i) =>
                         <>
                         <li key={i}>Q:{item.question}</li>
-                        
                         </>
                     )}
-                    </ul>
-                     
+                    </ul> 
                 <ul> 
                     Options:{this.props.reduxStore.options.map((item, i) =>
                     <li key={i}>{i + 1}: {item.option}</li>
@@ -105,8 +94,6 @@ class Submit extends Component {
                  <Button variant="contained" color="secondary" onClick={this.edit}>Edit</Button>
                 &nbsp;
             <Button variant="contained" color="primary" onClick={this.handleClick}>Send</Button>
-
-
             </div>
             
         )

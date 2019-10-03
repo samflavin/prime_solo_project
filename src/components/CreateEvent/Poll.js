@@ -85,12 +85,6 @@ class Poll extends Component {
         });
     }
 
-
-    // handleClick = () => {
-    //     // this.props.dispatch({ type: 'PREP_POLL', payload: this.state.newItem })
-    //     this.props.history.push(`/addGuest/${this.props.reduxStore.event}`);
-    // }
-
     handleBack = () => {
       
         this.props.history.push('/description');
@@ -98,7 +92,6 @@ class Poll extends Component {
 
     //sends over polling info to db
     handleSubmit = (eventId) => {
-        console.log('youve clicked submit form');
       this.props.dispatch({ type: 'PREP_POLL', payload: { question: this.state.newItem.question, options: this.state.newItem.options, eventId: eventId }});
       // clear out state for more polls
         this.setState({
@@ -114,7 +107,6 @@ class Poll extends Component {
         });
         //Nav to next
         this.props.history.push(`/addGuest/${this.props.reduxStore.event}`);
-
     }
 
 
@@ -164,32 +156,14 @@ class Poll extends Component {
                             <h2>{this.state.newItem.options.map( (item, i)  => 
                                     <p key={i}>{item}</p>
                                 )}</h2>
-
-
                         <br />
                     <Button variant="contained" color="primary" type="submit" value="submit" onClick={()=> this.handleSubmit(this.props.reduxStore.event)}>Create Poll</Button>
-                </section>
+                     </section>
                         <br />
-                        {/* {JSON.stringify(this.props.reduxStore.poll.question)}
-                {JSON.stringify(this.props.reduxStore.poll.options)} */}
-                {/* {JSON.stringify(this.props.reduxStore.poll)} */}
-                        <section>
-                    {/* {this.props.reduxStore.poll.map((item, i) =>
-                        <>
-                            <p key={i}><b>Question {i + 1}: {item.question}</b></p>
-                        <PollItem options={item.options}/>
-                        </>
-                    )} */}
-                        </section>
                 </Paper></center>
                 <br />
                 <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
-            {/* <Button variant="contained" color="primary" onClick={this.handleClick}>Next</Button> */}
-
-                        
-                
-
             </>
 
         )

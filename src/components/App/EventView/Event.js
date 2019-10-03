@@ -62,9 +62,7 @@ class Event extends Component {
     }
 
     componentDidMount() {
-        console.log('user id', this.props.reduxStore.user.id)
         this.props.dispatch({ type: 'GET_DESCRIPTION', payload: this.props.match.params.id });
-        // this.props.dispatch({ type: 'GET_EVENT_USER_ID', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_INVITEES', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_POLL', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'GET_OPTIONS', payload: this.props.match.params.id });
@@ -74,7 +72,6 @@ class Event extends Component {
         this.props.dispatch({ type: 'GET_TWO', payload: this.props.event_id });
         this.props.dispatch({ type: 'GET_THREE', payload: this.props.event_id });
         this.props.dispatch({ type: 'GET_FOUR', payload: this.props.event_id });
-
     }
 
     handleClick = () => {
@@ -110,89 +107,60 @@ class Event extends Component {
     checkUser = () => {
         if (this.props.reduxStore.user.id === this.props.reduxStore.description.user_id) {
         return  <Button variant = "contained" color = "secondary" onClick = { this.editMode } > Edit</Button>
- 
-    } else {
-
+    } else { 
         return <></>
     }
-    };
+            };
 
 
     render() {
         const { classes } = this.props;
-
         if (this.state.isEdit){
             return (
             <>
-            
            <center><Paper className={classes.root}>
-                        <h1><PeopleIcon></PeopleIcon> {this.props.reduxStore.description.event_name} <PeopleIcon></PeopleIcon></h1>
-                <h4>Description:</h4>
-                        <TextField type="text" value={this.state.description.description}
-                            onChange={(event) => this.handleChangeFor(event, 'description')} /> </Paper></center> 
-            <Grid container >
-                
-
-                {/* <pre>{JSON.stringify(this.props.reduxStore, null, 2)}</pre> */}
-                {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
-
+                    <h1><PeopleIcon></PeopleIcon> {this.props.reduxStore.description.event_name} <PeopleIcon></PeopleIcon></h1>
+                    <h4>Description:</h4>
+                    <TextField type="text" value={this.state.description.description}
+                    onChange={(event) => this.handleChangeFor(event, 'description')} /> </Paper>
+            </center> 
+                <Grid container >
                     <Grid item xs={6}>
                         <Paper className={classes.poll}>
-                                <TextField type="text" 
-                                     />
-                            {/* <h4>Poll Question:</h4>
-                            {this.props.reduxStore.poll.map((item, i) =>
-                                <>
-                                    <p key={i}>{item.question}</p>
-                                </>
-                            )} */}
+                                <TextField type="text"/>
                         </Paper>
                     </Grid>
-              
                 <Grid item xs={6}>
-                <Paper className={classes.guest}>
-                  <h4>Guest List:</h4>
-                                <TextField type="text"
-                                />
-                    {/* {this.props.reduxStore.invitees.map((item, i) =>
-                        <li key={i}>{item.username}</li>
-                    )} */}
+                    <Paper className={classes.guest}>
+                     <h4>Guest List:</h4>
+                    <TextField type="text"/>
                     </Paper>
                     </Grid>
-                
-
                <Grid item xs={6}>
-                <ChartPoll event_id={this.props.match.params.id} voteOne={this.props.reduxStore.votes} voteTwo={this.props.reduxStore.votesTwo} voteThree={this.props.reduxStore.votesThree} voteFour={this.props.reduxStore.votesFour}/>
+                  <ChartPoll event_id={this.props.match.params.id} voteOne={this.props.reduxStore.votes} voteTwo={this.props.reduxStore.votesTwo} 
+                  voteThree={this.props.reduxStore.votesThree} voteFour={this.props.reduxStore.votesFour}/>
                 </Grid>
                 &nbsp;
-                
                 <Grid item>
-                <ChatBar username={this.props.reduxStore.user.username} event_id={this.props.match.params.id} user_id={this.props.reduxStore.user.id} />
+                     <ChatBar username={this.props.reduxStore.user.username} event_id={this.props.match.params.id} user_id={this.props.reduxStore.user.id} />
                 </Grid>
-
-                
-
             </Grid>
                 <footer>
                     <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                     &nbsp;
-                <Button variant="contained" color="secondary" onClick={this.save}>Save</Button>
-
+                    <Button variant="contained" color="secondary" onClick={this.save}>Save</Button>
                 </footer>
             </>
         )
         } else {
         return (
             <>
-                <center><Paper className={classes.root}>
+             <center><Paper className={classes.root}>
                 <h1><PeopleIcon></PeopleIcon>{this.props.reduxStore.description.event_name}<PeopleIcon></PeopleIcon></h1>
-
                     <h4>Description:</h4>
                     <p>{this.props.reduxStore.description.description}</p>
-
                 </Paper >
-</center>
-                
+                </center>     
             <Grid container >
                     <Grid item xs={6}>
                         <Paper className={classes.poll}>
@@ -204,7 +172,6 @@ class Event extends Component {
                             )}
                         </Paper>
                     </Grid>
-              
                 <Grid item xs={6}>
                 <Paper className={classes.guest}>
                   <h4>Guest List:</h4>
@@ -213,8 +180,6 @@ class Event extends Component {
                     )}
                     </Paper>
                     </Grid>
-                
-
                <Grid item xs={6}>
                 <ChartPoll event_id={this.props.match.params.id} voteOne={this.props.reduxStore.votes} voteTwo={this.props.reduxStore.votesTwo} voteThree={this.props.reduxStore.votesThree} voteFour={this.props.reduxStore.votesFour}/>
                 </Grid>

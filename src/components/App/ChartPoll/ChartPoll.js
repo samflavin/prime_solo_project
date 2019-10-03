@@ -20,7 +20,6 @@ const styles = theme => ({
     },
 });
 
-
 class ChartPoll extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'GET_ONE', payload: this.props.event_id });
@@ -58,13 +57,11 @@ class ChartPoll extends Component {
 
     state = {
         labels: [],
-
     }
 
     render() {
 
         const labels = [];
-
         const data = {
             //labels get data from state
             labels: labels,
@@ -86,16 +83,12 @@ class ChartPoll extends Component {
 
         const { classes } = this.props;
 
-
         return (
-
-
             <>
                 <Paper className={classes.root}>
                     <div>
                         Options
                 <Doughnut data={data} />
-
                     </div>
                     <div className="options">
                         <h6>Poll Options:</h6>
@@ -108,7 +101,6 @@ class ChartPoll extends Component {
                                 </>
                             )
                         }
-
                         )}
                     </div>
                 </Paper>
@@ -119,7 +111,6 @@ class ChartPoll extends Component {
 const putReduxStoreOnProps = (reduxStore) => ({
     reduxStore
 })
-
 
 export default withStyles(styles)(connect(putReduxStoreOnProps)(ChartPoll));
 

@@ -33,19 +33,12 @@ const styles = theme => ({
     },
 });
 
-
-
-
 class EventView extends Component {
-
-   
+  
     componentDidMount() { 
-        console.log('user id', this.props.reduxStore.user.id)
     this.props.dispatch({ type: 'FETCH_EVENTLIST', payload: this.props.reduxStore.user.id });
     this.props.dispatch({ type: 'FETCH_INVITATIONLIST', payload: this.props.reduxStore.user.id });
     this.props.dispatch({ type: 'GET_DESCRIPTION', payload: this.props.reduxStore.user.id });
-
-
     }
 
     handleClick = () => {
@@ -53,31 +46,22 @@ class EventView extends Component {
     }
 
     handleBack = () => {
-
         // Then programmatically  nav back to poll
         this.props.history.push('/home');
     }
 
- 
-
     view = (event) => {
-        console.log('youve clicked this event', event)
         this.props.history.push(`/event/num/${event.id}`);
     }
 
-
-
-
     render() {
         const { classes } = this.props;
-
         return (
             <div>
                 <center><Paper className={classes.header}>
                 <h3><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon><PeopleIcon></PeopleIcon></h3>
             <h4>Current Events:</h4>
                 </Paper ></center>
-                
                 <center><Paper style={{overflow: 'auto' }} className={classes.root}>
                          <h5>My Events</h5>
                 <ul>
@@ -86,23 +70,20 @@ class EventView extends Component {
                     )}
                 </ul>
                 </Paper></center>
-            
                <center>
                 <Paper style={{ overflow: 'auto' }} className={classes.root}>
                         <h5>My Invitations</h5>
-                <ul>
+                     <ul>
                     {this.props.reduxStore.invitations.map((item, i) =>
                         <Link to={`/view/${item.event_id}`}> <li key={i}>{item.event_name}</li></Link>
                     )}
-                </ul>
+                    </ul>
                 </Paper>
                 </center> 
-               
                 <hr />
                 &nbsp;
             <Button variant="contained" color="primary" onClick={this.handleBack}>Back</Button>
                 &nbsp;
-
             </div>
         )
     }

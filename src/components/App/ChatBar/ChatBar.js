@@ -57,22 +57,18 @@ class ChatBar extends Component {
             <>
             <Paper style={{ maxHeight: 500, overflow: 'auto' }} className={classes.root}>
             <div className="chatBar">
-            
                 <section>
                         <div className="messages">
                         <h4>Chat:</h4>
                         {this.props.reduxStore.messages.map((item, i) =>
-                        
-                            <p key={i}>{item.username}: {item.messages}</p>
-                            
+                
+                            <p key={i}>{item.username}: {item.messages}</p>   
                         )}
                     </div>
                 </section>
-                
-                    <TextFields placeholder="Type something..." type="text" value={this.state.newItem.msg}
-                    onChange={(event) => this.handleChangeFor(event, 'msg')} /> <p></p>
-                    <Button variant="contained" color="primary" onClick={() => this.send(this.state.newItem)}>Send</Button>
-                
+            <TextFields placeholder="Type something..." type="text" value={this.state.newItem.msg}
+            onChange={(event) => this.handleChangeFor(event, 'msg')} /> <p></p>
+            <Button variant="contained" color="primary" onClick={() => this.send(this.state.newItem)}>Send</Button> 
             </div>
             </Paper>
             </>
